@@ -1,157 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs67t7ogrt0l2"]
+[gd_scene load_steps=5 format=3 uid="uid://bs67t7ogrt0l2"]
 
 [ext_resource type="Script" uid="uid://4ve07je13s2l" path="res://gameplay_components/fruit_slash/fruit.gd" id="1_5fehr"]
 [ext_resource type="Texture2D" uid="uid://dopwhay8eusay" path="res://art/fruits/Banana.png" id="1_88wv2"]
+[ext_resource type="Script" uid="uid://dmyyh30rgurvq" path="res://scenes/fruit_slash/sliced_half.gd" id="3_wcx8k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fehr"]
-size = Vector2(24, 2)
+[sub_resource type="CircleShape2D" id="CircleShape2D_wcx8k"]
+radius = 21.0
 
-[node name="Fruit" type="CharacterBody2D"]
+[node name="Fruit" type="CharacterBody2D" groups=["fruits"]]
 texture_filter = 1
 script = ExtResource("1_5fehr")
 
-[node name="WholeSprite" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="WholeSprite" groups=["sprite"]]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
 texture = ExtResource("1_88wv2")
 
-[node name="VerticalSlash" type="Node2D" parent="."]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_wcx8k")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="VerticalSlash"]
+[node name="SlashedCase" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="Half" type="ColorRect" parent="VerticalSlash/CharacterBody2D"]
+[node name="Half1" type="CharacterBody2D" parent="SlashedCase"]
+unique_name_in_owner = true
+position = Vector2(-1, 0)
+script = ExtResource("3_wcx8k")
+
+[node name="ClipRect1" type="ColorRect" parent="SlashedCase/Half1"]
+unique_name_in_owner = true
 clip_children = 1
-offset_top = -32.0
-offset_right = 37.0
-offset_bottom = 37.0
+offset_left = -46.0
+offset_top = -45.0
+offset_right = 48.0
+pivot_offset = Vector2(47, 45)
 
-[node name="Sprite2D" type="Sprite2D" parent="VerticalSlash/CharacterBody2D/Half" groups=["sprite"]]
-position = Vector2(0, 32)
-texture = ExtResource("1_88wv2")
+[node name="Half2" type="CharacterBody2D" parent="SlashedCase"]
+unique_name_in_owner = true
+position = Vector2(1, 0)
+script = ExtResource("3_wcx8k")
 
-[node name="Half2" type="ColorRect" parent="VerticalSlash/CharacterBody2D"]
+[node name="ClipRect2" type="ColorRect" parent="SlashedCase/Half2"]
+unique_name_in_owner = true
 clip_children = 1
-offset_left = -37.0
-offset_top = -32.0
-offset_bottom = 37.0
-
-[node name="Sprite2D" type="Sprite2D" parent="VerticalSlash/CharacterBody2D/Half2" groups=["sprite"]]
-position = Vector2(37, 32)
-texture = ExtResource("1_88wv2")
-
-[node name="HorizontalSlash" type="Node2D" parent="."]
-visible = false
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="HorizontalSlash"]
-
-[node name="Half1" type="ColorRect" parent="HorizontalSlash/CharacterBody2D"]
-clip_children = 1
-offset_left = -36.0
-offset_top = -30.0
-offset_right = 38.0
-pivot_offset = Vector2(37, 30)
-
-[node name="Sprite2D" type="Sprite2D" parent="HorizontalSlash/CharacterBody2D/Half1" groups=["sprite"]]
-position = Vector2(36, 30)
-texture = ExtResource("1_88wv2")
-
-[node name="Half2" type="ColorRect" parent="HorizontalSlash/CharacterBody2D"]
-clip_children = 1
-offset_left = -36.0
-offset_top = -30.0
-offset_right = 38.0
+offset_left = -48.0
+offset_top = -45.0
+offset_right = 46.0
 rotation = 3.14159
-pivot_offset = Vector2(37, 30)
-
-[node name="Sprite2D" type="Sprite2D" parent="HorizontalSlash/CharacterBody2D/Half2" groups=["sprite"]]
-position = Vector2(38, 30)
-rotation = 3.14159
-texture = ExtResource("1_88wv2")
-
-[node name="ForwardSlash" type="Node2D" parent="."]
-visible = false
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="ForwardSlash"]
-
-[node name="Half1" type="ColorRect" parent="ForwardSlash/CharacterBody2D"]
-clip_children = 1
-offset_left = -36.0
-offset_top = -30.0
-offset_right = 38.0
-rotation = -0.785398
-pivot_offset = Vector2(37, 30)
-
-[node name="Sprite2D" type="Sprite2D" parent="ForwardSlash/CharacterBody2D/Half1" groups=["sprite"]]
-position = Vector2(36.2929, 29.2929)
-rotation = 0.785398
-texture = ExtResource("1_88wv2")
-
-[node name="Half2" type="ColorRect" parent="ForwardSlash/CharacterBody2D"]
-clip_children = 1
-offset_left = -36.0
-offset_top = -30.0
-offset_right = 38.0
-rotation = 2.35619
-pivot_offset = Vector2(37, 30)
-
-[node name="Sprite2D2" type="Sprite2D" parent="ForwardSlash/CharacterBody2D/Half2" groups=["sprite"]]
-position = Vector2(37.7071, 30.7071)
-rotation = -2.35619
-texture = ExtResource("1_88wv2")
-
-[node name="BackSlash" type="Node2D" parent="."]
-visible = false
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="BackSlash"]
-
-[node name="Half1" type="ColorRect" parent="BackSlash/CharacterBody2D"]
-clip_children = 1
-offset_left = -36.0
-offset_top = -30.0
-offset_right = 38.0
-rotation = 0.785398
-pivot_offset = Vector2(37, 30)
-
-[node name="Sprite2D" type="Sprite2D" parent="BackSlash/CharacterBody2D/Half1" groups=["sprite"]]
-position = Vector2(36.2929, 30.7071)
-rotation = -0.785398
-texture = ExtResource("1_88wv2")
-
-[node name="Half2" type="ColorRect" parent="BackSlash/CharacterBody2D"]
-clip_children = 1
-offset_left = -36.0
-offset_top = -30.0
-offset_right = 38.0
-rotation = 3.92699
-pivot_offset = Vector2(37, 30)
-
-[node name="Sprite2D2" type="Sprite2D" parent="BackSlash/CharacterBody2D/Half2" groups=["sprite"]]
-position = Vector2(37.7071, 29.2929)
-rotation = 2.35619
-texture = ExtResource("1_88wv2")
-
-[node name="VerticalSlashArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalSlashArea"]
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_5fehr")
-
-[node name="HorizontalSlashArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HorizontalSlashArea"]
-shape = SubResource("RectangleShape2D_5fehr")
-
-[node name="ForwardSlashArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ForwardSlashArea"]
-rotation = -0.785398
-shape = SubResource("RectangleShape2D_5fehr")
-
-[node name="BackSlashArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackSlashArea"]
-rotation = 0.785398
-shape = SubResource("RectangleShape2D_5fehr")
+pivot_offset = Vector2(47, 45)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

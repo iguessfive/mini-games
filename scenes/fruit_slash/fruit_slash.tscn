@@ -1,45 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://0kf2c6pbuklo"]
+[gd_scene load_steps=8 format=3 uid="uid://0kf2c6pbuklo"]
 
+[ext_resource type="PackedScene" uid="uid://bplxaj5niub6" path="res://scenes/fruit_slash/slasher_cursor.tscn" id="1_kco6q"]
 [ext_resource type="Script" uid="uid://bm24vudaiwiqc" path="res://gameplay_components/fruit_slash/cannon.gd" id="1_l61y6"]
 [ext_resource type="PackedScene" uid="uid://22vbpm5oxmpx" path="res://scenes/menus_template.tscn" id="1_si1oj"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_yk7ds"]
 [ext_resource type="Theme" uid="uid://uay5mr34ptg5" path="res://themes/fruit_slash.tres" id="2_ufly5"]
+[ext_resource type="PackedScene" uid="uid://bs67t7ogrt0l2" path="res://scenes/fruit_slash/fruit.tscn" id="6_2godk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bdpbr"]
 font = ExtResource("1_yk7ds")
 font_size = 32
 
 [node name="FruitSlash" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-122.0]
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Gamplay" type="Node2D" parent="."]
 
-[node name="SlashPoint" type="Area2D" parent="Node2D"]
+[node name="SlasherCursor" parent="Gamplay" instance=ExtResource("1_kco6q")]
 
-[node name="LaunchPoints" type="Node2D" parent="Node2D"]
+[node name="LaunchPoints" type="Node2D" parent="Gamplay"]
 
-[node name="LaunchPoint1" type="Marker2D" parent="Node2D/LaunchPoints"]
+[node name="LaunchPoint1" type="Marker2D" parent="Gamplay/LaunchPoints"]
 position = Vector2(-174, 390)
 script = ExtResource("1_l61y6")
 
-[node name="LaunchPoint2" type="Marker2D" parent="Node2D/LaunchPoints"]
+[node name="LaunchPoint2" type="Marker2D" parent="Gamplay/LaunchPoints"]
 position = Vector2(157, 794)
 
-[node name="LaunchPoint3" type="Marker2D" parent="Node2D/LaunchPoints"]
+[node name="LaunchPoint3" type="Marker2D" parent="Gamplay/LaunchPoints"]
 position = Vector2(371, 940)
 
-[node name="LaunchPoint4" type="Marker2D" parent="Node2D/LaunchPoints"]
+[node name="LaunchPoint4" type="Marker2D" parent="Gamplay/LaunchPoints"]
 position = Vector2(623, 835)
 
-[node name="LaunchPoint5" type="Marker2D" parent="Node2D/LaunchPoints"]
+[node name="LaunchPoint5" type="Marker2D" parent="Gamplay/LaunchPoints"]
 position = Vector2(913, 943)
 
-[node name="LaunchPoint6" type="Marker2D" parent="Node2D/LaunchPoints"]
+[node name="LaunchPoint6" type="Marker2D" parent="Gamplay/LaunchPoints"]
 position = Vector2(1054, 782)
 
-[node name="LaunchPoint7" type="Marker2D" parent="Node2D/LaunchPoints"]
+[node name="LaunchPoint7" type="Marker2D" parent="Gamplay/LaunchPoints"]
 position = Vector2(1344, 375)
 
-[node name="GameDurationTimer" type="Timer" parent="Node2D"]
+[node name="GameDurationTimer" type="Timer" parent="Gamplay"]
+
+[node name="Fruit" parent="Gamplay" groups=["fruit"] instance=ExtResource("6_2godk")]
+position = Vector2(60, 266)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

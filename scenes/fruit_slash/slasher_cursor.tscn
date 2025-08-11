@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bplxaj5niub6"]
+
+[ext_resource type="Script" uid="uid://bkup2fo0a7n4b" path="res://gameplay_components/fruit_slash/slasher_cursor.gd" id="1_wvwhb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l61y6"]
+radius = 10.0499
+
+[node name="SlasherCursor" type="Area2D" groups=["cursor"]]
+script = ExtResource("1_wvwhb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l61y6")
+
+[node name="Line2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
