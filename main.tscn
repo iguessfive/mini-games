@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://uitsnfgaivho"]
 
 [ext_resource type="LabelSettings" uid="uid://b02jthouq57m8" path="res://resources/index_label.tres" id="1_0xm2m"]
-[ext_resource type="Theme" uid="uid://b1wx71ac8k0l" path="res://resources/main_theme.tres" id="1_7mycd"]
+[ext_resource type="Theme" uid="uid://b1wx71ac8k0l" path="res://themes/main_theme.tres" id="1_7mycd"]
 [ext_resource type="StyleBox" uid="uid://da4t1xyqp4ygo" path="res://resources/container_background.tres" id="1_h2yge"]
 [ext_resource type="LabelSettings" uid="uid://bbvs0m1e4ai2a" path="res://resources/title_label.tres" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dod6bnea2m2gl" path="res://gameplay_components/selection_container.gd" id="3_272bh"]
@@ -53,7 +53,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_styles/panel = ExtResource("1_h2yge")
 script = ExtResource("3_272bh")
-title = &"Game One"
+title = &"Fruit Slash"
 index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/SelectionContainer"]
@@ -80,7 +80,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 8.0
-text = "First Game"
+text = "Game Title"
 label_settings = ExtResource("1_ig7tw")
 horizontal_alignment = 1
 

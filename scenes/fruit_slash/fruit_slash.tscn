@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://0kf2c6pbuklo"]
+
+[ext_resource type="Script" uid="uid://bm24vudaiwiqc" path="res://gameplay_components/fruit_slash/cannon.gd" id="1_l61y6"]
+[ext_resource type="PackedScene" uid="uid://22vbpm5oxmpx" path="res://scenes/menus_template.tscn" id="1_si1oj"]
+[ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_yk7ds"]
+[ext_resource type="Theme" uid="uid://uay5mr34ptg5" path="res://themes/fruit_slash.tres" id="2_ufly5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bdpbr"]
+font = ExtResource("1_yk7ds")
+font_size = 32
+
+[node name="FruitSlash" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="SlashPoint" type="Area2D" parent="Node2D"]
+
+[node name="LaunchPoints" type="Node2D" parent="Node2D"]
+
+[node name="LaunchPoint1" type="Marker2D" parent="Node2D/LaunchPoints"]
+position = Vector2(-174, 390)
+script = ExtResource("1_l61y6")
+
+[node name="LaunchPoint2" type="Marker2D" parent="Node2D/LaunchPoints"]
+position = Vector2(157, 794)
+
+[node name="LaunchPoint3" type="Marker2D" parent="Node2D/LaunchPoints"]
+position = Vector2(371, 940)
+
+[node name="LaunchPoint4" type="Marker2D" parent="Node2D/LaunchPoints"]
+position = Vector2(623, 835)
+
+[node name="LaunchPoint5" type="Marker2D" parent="Node2D/LaunchPoints"]
+position = Vector2(913, 943)
+
+[node name="LaunchPoint6" type="Marker2D" parent="Node2D/LaunchPoints"]
+position = Vector2(1054, 782)
+
+[node name="LaunchPoint7" type="Marker2D" parent="Node2D/LaunchPoints"]
+position = Vector2(1344, 375)
+
+[node name="GameDurationTimer" type="Timer" parent="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameDurationLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
+anchor_left = 0.775
+anchor_top = 0.675
+anchor_right = 2.775
+anchor_bottom = 1.775
+offset_right = -39.0
+offset_bottom = -21.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_bdpbr")
+metadata/_edit_use_anchors_ = true
+
+[node name="Menus" parent="CanvasLayer" instance=ExtResource("1_si1oj")]
+visible = false
+theme = ExtResource("2_ufly5")
+
+[node name="Panel" parent="CanvasLayer/Menus/StartMenu" index="0"]
+theme_type_variation = &"MenuPanel"
+
+[node name="StartButton" parent="CanvasLayer/Menus/StartMenu" index="3"]
+theme_type_variation = &"MainButton"
+
+[node name="ReturnButton" parent="CanvasLayer/Menus/StartMenu" index="4"]
+theme_type_variation = &"MainButton"
+
+[node name="Panel" parent="CanvasLayer/Menus/EndMenu" index="0"]
+theme_type_variation = &"MenuPanel"
+
+[node name="QuitButton" parent="CanvasLayer/Menus/EndMenu" index="2"]
+theme_type_variation = &"MainButton"
+
+[node name="Panel" parent="CanvasLayer/Menus/PauseMenu" index="0"]
+theme_type_variation = &"MenuPanel"
+
+[node name="ExitButton" parent="CanvasLayer/Menus/PauseMenu" index="2"]
+theme_type_variation = &"MainButton"
+
+[editable path="CanvasLayer/Menus"]
