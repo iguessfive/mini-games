@@ -1,0 +1,178 @@
+[gd_scene load_steps=10 format=3 uid="uid://22vbpm5oxmpx"]
+
+[ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_qjjbu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjjbu"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_os0xr"]
+font = ExtResource("1_qjjbu")
+font_size = 64
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5fu2t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_os0xr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnjsw"]
+bg_color = Color(0.65, 0.65, 0.65, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fu2t"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_runhf"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_qjjbu"]
+font = ExtResource("1_qjjbu")
+font_size = 64
+
+[node name="Game01" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.1, 0.498039)
+
+[node name="StartScreen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/StartScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qjjbu")
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/StartScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.169027
+anchor_top = 0.273022
+anchor_right = 0.832622
+anchor_bottom = 0.49241
+offset_left = 174.25
+offset_top = 16.9877
+offset_right = -174.25
+offset_bottom = -16.9877
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Title"
+label_settings = SubResource("LabelSettings_os0xr")
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="CanvasLayer/StartScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.354839
+anchor_top = 0.59949
+anchor_right = 0.654378
+anchor_bottom = 0.701531
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5fu2t")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_os0xr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nnjsw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nnjsw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5fu2t")
+text = "Start"
+metadata/_edit_use_anchors_ = true
+
+[node name="ReturnButton" type="Button" parent="CanvasLayer/StartScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.354839
+anchor_top = 0.734694
+anchor_right = 0.654378
+anchor_bottom = 0.836735
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5fu2t")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_os0xr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nnjsw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nnjsw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5fu2t")
+text = "Return"
+metadata/_edit_use_anchors_ = true
+
+[node name="EndScreen" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_runhf")
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164747
+anchor_top = 0.112245
+anchor_right = 0.835253
+anchor_bottom = 0.331633
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_qjjbu")
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.354839
+anchor_top = 0.59949
+anchor_right = 0.654378
+anchor_bottom = 0.701531
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5fu2t")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_os0xr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nnjsw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nnjsw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5fu2t")
+text = "Quit
+"
+metadata/_edit_use_anchors_ = true

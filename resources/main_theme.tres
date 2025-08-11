@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b1wx71ac8k0l"]
+
+[ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_ols5k"]
+
+[resource]
+default_font = ExtResource("1_ols5k")
+ButtonFontSize/base_type = &"Button"
+ButtonFontSize/font_sizes/font_size = 24

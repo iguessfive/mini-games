@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://uitsnfgaivho"]
+
+[ext_resource type="LabelSettings" uid="uid://b02jthouq57m8" path="res://resources/index_label.tres" id="1_0xm2m"]
+[ext_resource type="Theme" uid="uid://b1wx71ac8k0l" path="res://resources/main_theme.tres" id="1_7mycd"]
+[ext_resource type="StyleBox" uid="uid://da4t1xyqp4ygo" path="res://resources/container_background.tres" id="1_h2yge"]
+[ext_resource type="LabelSettings" uid="uid://bbvs0m1e4ai2a" path="res://resources/title_label.tres" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dod6bnea2m2gl" path="res://gameplay_components/selection_container.gd" id="3_272bh"]
+[ext_resource type="StyleBox" uid="uid://b4x1bdscqy1j4" path="res://resources/main_play_bh.tres" id="4_lquwl"]
+[ext_resource type="StyleBox" uid="uid://btecjxjkodd4d" path="res://resources/main_play-bn.tres" id="5_7mycd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mycd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_272bh"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7mycd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.498039, 0.74902, 0.74902, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.078125
+anchor_right = 0.921875
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SelectionContainer" type="PanelContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_h2yge")
+script = ExtResource("3_272bh")
+title = &"Game One"
+index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/SelectionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/SelectionContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="IndexLabel" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/SelectionContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "#1"
+label_settings = ExtResource("1_0xm2m")
+vertical_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/SelectionContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 8.0
+text = "First Game"
+label_settings = ExtResource("1_ig7tw")
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/SelectionContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7mycd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_272bh")
+theme_override_styles/hover = ExtResource("4_lquwl")
+theme_override_styles/pressed = ExtResource("4_lquwl")
+theme_override_styles/normal = ExtResource("5_7mycd")
+text = "Play"
+
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/SelectionContainer/MarginContainer/HBoxContainer/PlayButton" to="ScrollContainer/MarginContainer/VBoxContainer/SelectionContainer" method="_on_play_button_pressed"]
