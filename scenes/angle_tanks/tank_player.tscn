@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://clyjmxg6rv7j8"]
+
+[ext_resource type="Script" uid="uid://byvis4pkok5q2" path="res://gameplay_components/angle_tanks/tank_player.gd" id="1_v564w"]
+[ext_resource type="Texture2D" uid="uid://m3u45qfoutut" path="res://art/top_down_tanks/tankBody_blue_outline.png" id="2_u284i"]
+[ext_resource type="Texture2D" uid="uid://b1g71bagytvi1" path="res://art/top_down_tanks/tankBlue_barrel2_outline.png" id="3_o5g50"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6wdga"]
+radius = 18.6052
+
+[node name="PlayerTank" type="CharacterBody2D" groups=["tank"]]
+rotation = 1.5708
+scale = Vector2(1.3, 1.3)
+collision_mask = 4
+script = ExtResource("1_v564w")
+
+[node name="Tank" type="Sprite2D" parent="."]
+texture = ExtResource("2_u284i")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Barrel" type="Sprite2D" parent="Pivot"]
+unique_name_in_owner = true
+position = Vector2(0, -18)
+texture = ExtResource("3_o5g50")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="Pivot"]
+unique_name_in_owner = true
+position = Vector2(-1.54671e-06, -35.3846)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6wdga")

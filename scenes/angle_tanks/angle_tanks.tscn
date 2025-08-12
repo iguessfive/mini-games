@@ -1,0 +1,290 @@
+[gd_scene load_steps=18 format=4 uid="uid://r1j7xso74yb6"]
+
+[ext_resource type="Texture2D" uid="uid://c2vn54c6xc35j" path="res://art/top_down_tanks/sand.png" id="1_cnusa"]
+[ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_pkhcq"]
+[ext_resource type="PackedScene" uid="uid://clyjmxg6rv7j8" path="res://scenes/angle_tanks/tank_player.tscn" id="1_vxp60"]
+[ext_resource type="Texture2D" uid="uid://cswo8jp6ybpcm" path="res://art/top_down_tanks/crate_metal.png" id="2_vxp60"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6wdga"]
+texture = ExtResource("1_cnusa")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mtiuc"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_6wdga")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kn8ev"]
+texture = ExtResource("2_vxp60")
+texture_region_size = Vector2i(56, 56)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28, -28, 28, -28, 28, 28, -28, 28)
+
+[sub_resource type="TileSet" id="TileSet_x3cnu"]
+tile_size = Vector2i(56, 56)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_kn8ev")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pkhcq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxp60"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxp60"]
+bg_color = Color(0.85, 0.255, 0.255, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtiuc"]
+bg_color = Color(0.8, 0.24, 0.24, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkhcq"]
+bg_color = Color(0.39, 0.541667, 0.65, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_6wdga"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_pkhcq")
+Button/styles/focus = SubResource("StyleBoxEmpty_vxp60")
+Button/styles/hover = SubResource("StyleBoxFlat_vxp60")
+Button/styles/normal = SubResource("StyleBoxFlat_mtiuc")
+Button/styles/pressed = SubResource("StyleBoxFlat_vxp60")
+Panel/styles/panel = SubResource("StyleBoxFlat_pkhcq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_os0xr"]
+font = ExtResource("1_pkhcq")
+font_size = 48
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qqsi3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cnusa"]
+
+[node name="AngleTanks" type="Node2D"]
+
+[node name="PlayerTank" parent="." instance=ExtResource("1_vxp60")]
+position = Vector2(321, 200)
+
+[node name="Map" type="Node2D" parent="."]
+z_index = -10
+
+[node name="FloorLayer" type="TileMapLayer" parent="Map"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAADAAIAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_mtiuc")
+
+[node name="WalLayer" type="TileMapLayer" parent="Map"]
+position = Vector2(18, 14)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAATAAEAAAAAAAAAAAATAAIAAAAAAAAAAAATAAMAAAAAAAAAAAATAAQAAAAAAAAAAAATAAUAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAATAAgAAAAAAAAAAAATAAkAAAAAAAAAAAATAAoAAAAAAAAAAAASAAoAAAAAAAAAAAARAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAABAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAADAAoAAAAAAAAAAAACAAoAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAASAAUAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAASAAYAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_x3cnu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menus" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_6wdga")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Menus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.1, 0.498039)
+
+[node name="StartMenu" type="Control" parent="CanvasLayer/Menus"]
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pkhcq")
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.252304
+anchor_top = 0.0408163
+anchor_right = 0.747696
+anchor_bottom = 0.206633
+grow_horizontal = 2
+text = "Angle Tanks"
+label_settings = SubResource("LabelSettings_os0xr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.142857
+anchor_top = 0.247449
+anchor_right = 0.86636
+anchor_bottom = 0.5
+offset_bottom = -1.52588e-05
+theme_override_font_sizes/normal_font_size = 20
+text = "Play as the blue tanks and destroy the red tanks."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.308756
+anchor_top = 0.647959
+anchor_right = 0.691244
+anchor_bottom = 0.775511
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qqsi3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cnusa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vxp60")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vxp60")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mtiuc")
+text = "Start"
+
+[node name="ReturnButton" type="Button" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.359447
+anchor_top = 0.818878
+anchor_right = 0.647466
+anchor_bottom = 0.933674
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Return"
+
+[node name="EndMenu" type="Control" parent="CanvasLayer/Menus"]
+visible = false
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164747
+anchor_top = 0.112245
+anchor_right = 0.835253
+anchor_bottom = 0.331633
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.354839
+anchor_top = 0.59949
+anchor_right = 0.654378
+anchor_bottom = 0.701531
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Quit
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer/Menus"]
+visible = false
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25576
+anchor_top = 0.155612
+anchor_right = 0.741936
+anchor_bottom = 0.326531
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373272
+anchor_top = 0.691327
+anchor_right = 0.626728
+anchor_bottom = 0.795919
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+metadata/_edit_use_anchors_ = true

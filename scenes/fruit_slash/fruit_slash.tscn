@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bplxaj5niub6" path="res://scenes/fruit_slash/slasher_cursor.tscn" id="1_kco6q"]
 [ext_resource type="Script" uid="uid://bm24vudaiwiqc" path="res://gameplay_components/fruit_slash/cannon.gd" id="1_l61y6"]
-[ext_resource type="PackedScene" uid="uid://22vbpm5oxmpx" path="res://scenes/menus_template.tscn" id="1_si1oj"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_yk7ds"]
 [ext_resource type="Theme" uid="uid://uay5mr34ptg5" path="res://themes/fruit_slash.tres" id="2_ufly5"]
 [ext_resource type="PackedScene" uid="uid://bs67t7ogrt0l2" path="res://scenes/fruit_slash/fruit.tscn" id="6_2godk"]
@@ -10,6 +9,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_bdpbr"]
 font = ExtResource("1_yk7ds")
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_os0xr"]
+font = ExtResource("1_yk7ds")
+font_size = 48
 
 [node name="FruitSlash" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-122.0]
@@ -67,29 +70,193 @@ text = "00:00"
 label_settings = SubResource("LabelSettings_bdpbr")
 metadata/_edit_use_anchors_ = true
 
-[node name="Menus" parent="CanvasLayer" instance=ExtResource("1_si1oj")]
-visible = false
+[node name="Menus" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_ufly5")
 
-[node name="Panel" parent="CanvasLayer/Menus/StartMenu" index="0"]
+[node name="Background" type="ColorRect" parent="CanvasLayer/Menus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.1, 0.498039)
+
+[node name="StartMenu" type="Control" parent="CanvasLayer/Menus"]
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_type_variation = &"MenuPanel"
 
-[node name="StartButton" parent="CanvasLayer/Menus/StartMenu" index="3"]
-theme_type_variation = &"MainButton"
+[node name="TitleLabel" type="Label" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.252304
+anchor_top = 0.0408163
+anchor_right = 0.747696
+anchor_bottom = 0.206633
+grow_horizontal = 2
+text = "Fruit Slash"
+label_settings = SubResource("LabelSettings_os0xr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ReturnButton" parent="CanvasLayer/Menus/StartMenu" index="4"]
-theme_type_variation = &"MainButton"
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.142857
+anchor_top = 0.247449
+anchor_right = 0.86636
+anchor_bottom = 0.5
+offset_bottom = -1.52588e-05
+theme_override_font_sizes/normal_font_size = 20
+text = "Try to slash as many fruits as you can."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Panel" parent="CanvasLayer/Menus/EndMenu" index="0"]
+[node name="StartButton" type="Button" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.308756
+anchor_top = 0.647959
+anchor_right = 0.691244
+anchor_bottom = 0.775511
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MainButton"
+theme_override_font_sizes/font_size = 24
+text = "Start"
+
+[node name="ReturnButton" type="Button" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.359447
+anchor_top = 0.818878
+anchor_right = 0.647466
+anchor_bottom = 0.933674
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MainButton"
+theme_override_font_sizes/font_size = 20
+text = "Return"
+
+[node name="EndMenu" type="Control" parent="CanvasLayer/Menus"]
+visible = false
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_type_variation = &"MenuPanel"
 
-[node name="QuitButton" parent="CanvasLayer/Menus/EndMenu" index="2"]
-theme_type_variation = &"MainButton"
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164747
+anchor_top = 0.112245
+anchor_right = 0.835253
+anchor_bottom = 0.331633
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Panel" parent="CanvasLayer/Menus/PauseMenu" index="0"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.354839
+anchor_top = 0.59949
+anchor_right = 0.654378
+anchor_bottom = 0.701531
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MainButton"
+theme_override_font_sizes/font_size = 24
+text = "Quit
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer/Menus"]
+visible = false
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_type_variation = &"MenuPanel"
 
-[node name="ExitButton" parent="CanvasLayer/Menus/PauseMenu" index="2"]
-theme_type_variation = &"MainButton"
+[node name="Label" type="Label" parent="CanvasLayer/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25576
+anchor_top = 0.155612
+anchor_right = 0.741936
+anchor_bottom = 0.326531
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[editable path="CanvasLayer/Menus"]
+[node name="ExitButton" type="Button" parent="CanvasLayer/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373272
+anchor_top = 0.691327
+anchor_right = 0.626728
+anchor_bottom = 0.795919
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MainButton"
+text = "Exit"
+metadata/_edit_use_anchors_ = true

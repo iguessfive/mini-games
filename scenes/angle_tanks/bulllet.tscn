@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1rasrft2vtw1"]
+
+[ext_resource type="Script" uid="uid://dklkk56ha1n0j" path="res://gameplay_components/angle_tanks/bullet.gd" id="1_pi0nk"]
+[ext_resource type="Texture2D" uid="uid://b0uwx34okovy6" path="res://art/top_down_tanks/bulletBlue1_outline.png" id="2_pi0nk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pi0nk"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xmb53"]
+radius = 5.0
+height = 16.0
+
+[node name="Bulllet" type="CharacterBody2D" groups=["bullet"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_pi0nk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["bullet"]]
+rotation = 1.5708
+texture = ExtResource("2_pi0nk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pi0nk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["bullet"]]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xmb53")
+debug_color = Color(0.74296, 0.44092, 0.40332, 0.42)
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
