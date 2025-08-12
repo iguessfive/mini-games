@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var movement_speed := 70.0
 @export var bullet_speed := 120.0
-@export var barrel_rotation_speed := 20.0
+@export var rotation_speed_aim := 50.0
 @export var rotation_speed := 2.0
 
 func _physics_process(delta: float) -> void:
@@ -33,6 +33,5 @@ func handle_barrel_aim() -> void:
 	var pivot = $Pivot
 	var mouse_pos = get_global_mouse_position()
 	var direction_aim = (mouse_pos - pivot.global_position).normalized()
-	var target_angle = direction_aim.angle()
-
-	pivot.rotation = lerp_angle(pivot.rotation, target_angle, barrel_rotation_speed * get_process_delta_time())
+	var target_angle = wrapf(direction_aim.angle(), 0, 2 * PI)
+	pivot.rotation = lerp_angle(pivot.rotation, target_angle, rotation_speed_aim * get_process_delta_time())
