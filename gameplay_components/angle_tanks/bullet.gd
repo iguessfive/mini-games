@@ -32,6 +32,9 @@ func _physics_process(delta: float) -> void:
 					var ratio = collision.get_remainder().length() / velocity.length()
 					motion = velocity * ratio
 					bounce_count += 1
+				else:
+					destroy()
+					return
 		iteration += 1
 
 func _on_lifetime_timer_timeout() -> void:
@@ -39,3 +42,9 @@ func _on_lifetime_timer_timeout() -> void:
 
 func destroy() -> void:
 	call_deferred("queue_free")
+
+func _on_area_2d_body_entered(body:Node2D) -> void:
+	if body.is_in_group("tanks"):
+		destroy()
+	elif body.is_in_group("bullets"):
+		destroy()
