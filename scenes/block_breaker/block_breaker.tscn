@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://drclxwamm7dak"]
+[gd_scene load_steps=24 format=3 uid="uid://drclxwamm7dak"]
 
 [ext_resource type="Texture2D" uid="uid://4mvf24vjsn4w" path="res://art/block_breaker/white_1x1.png" id="1_a38pv"]
 [ext_resource type="Script" uid="uid://b47m20h4w6p8k" path="res://gameplay_components/block_breaker/game_controller.gd" id="1_bvf43"]
@@ -71,6 +71,9 @@ font_size = 48
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0yfd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a38pv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_82pwi"]
+font_size = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4ewa"]
 size = Vector2(16.5, 646.5)
@@ -254,6 +257,16 @@ theme_override_font_sizes/font_size = 24
 text = "Quit
 "
 metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Menus/EndMenu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 132.0
+offset_top = 145.0
+offset_right = 225.0
+offset_bottom = 190.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_82pwi")
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer/Menus"]
 visible = false
@@ -502,6 +515,20 @@ position = Vector2(1024, 64)
 [node name="Block17" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
 position = Vector2(1088, 64)
 
+[node name="MainBackground" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="MainBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.85, 0.494275, 0.0595, 1)
+
+[connection signal="game_over" from="CanvasLayer/Menus" to="." method="_on_menus_game_over"]
 [connection signal="game_over" from="CanvasLayer/Menus" to="CanvasLayer/Menus" method="_on_game_over"]
 [connection signal="pressed" from="CanvasLayer/Menus/StartMenu/StartButton" to="CanvasLayer/Menus" method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menus/StartMenu/ReturnButton" to="CanvasLayer/Menus" method="_on_return_button_pressed"]
