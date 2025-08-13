@@ -1,0 +1,509 @@
+[gd_scene load_steps=23 format=3 uid="uid://drclxwamm7dak"]
+
+[ext_resource type="Texture2D" uid="uid://4mvf24vjsn4w" path="res://art/block_breaker/white_1x1.png" id="1_a38pv"]
+[ext_resource type="Script" uid="uid://b47m20h4w6p8k" path="res://gameplay_components/block_breaker/game_controller.gd" id="1_bvf43"]
+[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="1_e0yfd"]
+[ext_resource type="Script" uid="uid://dxtny8vdfrvba" path="res://gameplay_components/block_breaker/paddle.gd" id="1_i4ewa"]
+[ext_resource type="Shader" uid="uid://co3m7lttbh5rr" path="res://shader/rounded_rect.gdshader" id="1_j68cb"]
+[ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_ubpm8"]
+[ext_resource type="Script" uid="uid://bh30orulhoewo" path="res://gameplay_components/block_breaker/ball.gd" id="4_6gs71"]
+[ext_resource type="PackedScene" uid="uid://ciwmy3udmyodg" path="res://scenes/block_breaker/block.tscn" id="8_82pwi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a38pv"]
+shader = ExtResource("1_j68cb")
+shader_parameter/corner_fraction = 0.1
+shader_parameter/rect_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4ewa"]
+shader = ExtResource("1_j68cb")
+shader_parameter/corner_fraction = 1.0
+shader_parameter/rect_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bvf43"]
+radius = 14.0357
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j68cb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4ewa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a38pv"]
+bg_color = Color(0.87, 0.38715, 0.087, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j68cb"]
+bg_color = Color(0.87, 0.3335, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0yfd"]
+bg_color = Color(0.608625, 0.75, 0.0975, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_6gs71"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_j68cb")
+Button/styles/focus = SubResource("StyleBoxEmpty_i4ewa")
+Button/styles/hover = SubResource("StyleBoxFlat_a38pv")
+Button/styles/normal = SubResource("StyleBoxFlat_j68cb")
+Button/styles/pressed = SubResource("StyleBoxFlat_a38pv")
+Panel/styles/panel = SubResource("StyleBoxFlat_e0yfd")
+
+[sub_resource type="LabelSettings" id="LabelSettings_os0xr"]
+font = ExtResource("1_ubpm8")
+font_size = 48
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0yfd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a38pv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4ewa"]
+size = Vector2(16.5, 646.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gs71"]
+size = Vector2(1150, 18)
+
+[node name="BlockBreaker" type="Node2D"]
+script = ExtResource("1_bvf43")
+
+[node name="Paddle" type="CharacterBody2D" parent="."]
+position = Vector2(594, 603)
+script = ExtResource("1_i4ewa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Paddle"]
+material = SubResource("ShaderMaterial_a38pv")
+scale = Vector2(136, 16)
+texture = ExtResource("1_a38pv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Paddle"]
+polygon = PackedVector2Array(-68, -7, -1, -8, 68, -7, 68, 8, -68, 8)
+
+[node name="Ball" type="CharacterBody2D" parent="." groups=["ball"]]
+position = Vector2(576, 352)
+script = ExtResource("4_6gs71")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+material = SubResource("ShaderMaterial_i4ewa")
+scale = Vector2(28, 28)
+texture = ExtResource("1_a38pv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_bvf43")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menus" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_6gs71")
+script = ExtResource("1_e0yfd")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Menus"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.1, 0.498039)
+
+[node name="StartMenu" type="Control" parent="CanvasLayer/Menus"]
+visible = false
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e0yfd")
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.252304
+anchor_top = 0.0408163
+anchor_right = 0.747696
+anchor_bottom = 0.206633
+grow_horizontal = 2
+text = "Block Breaker"
+label_settings = SubResource("LabelSettings_os0xr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.142857
+anchor_top = 0.247449
+anchor_right = 0.86636
+anchor_bottom = 0.5
+offset_bottom = -1.52588e-05
+theme_override_font_sizes/normal_font_size = 20
+text = "Break all the blocks without letting the ball drop"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.308756
+anchor_top = 0.647959
+anchor_right = 0.691244
+anchor_bottom = 0.775511
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e0yfd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_a38pv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a38pv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a38pv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_j68cb")
+text = "Start"
+
+[node name="ReturnButton" type="Button" parent="CanvasLayer/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.359447
+anchor_top = 0.818878
+anchor_right = 0.647466
+anchor_bottom = 0.933674
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Return"
+
+[node name="EndMenu" type="Control" parent="CanvasLayer/Menus"]
+visible = false
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164747
+anchor_top = 0.112245
+anchor_right = 0.835253
+anchor_bottom = 0.331633
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.354839
+anchor_top = 0.59949
+anchor_right = 0.654378
+anchor_bottom = 0.701531
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Quit
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer/Menus"]
+visible = false
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25576
+anchor_top = 0.155612
+anchor_right = 0.741936
+anchor_bottom = 0.326531
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373272
+anchor_top = 0.691327
+anchor_right = 0.626728
+anchor_bottom = 0.795919
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+metadata/_edit_use_anchors_ = true
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="RWall" type="StaticBody2D" parent="Walls"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/RWall"]
+position = Vector2(7.75, 323.25)
+scale = Vector2(16.5, 647.5)
+texture = ExtResource("1_a38pv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RWall"]
+position = Vector2(7.75, 323.25)
+shape = SubResource("RectangleShape2D_i4ewa")
+
+[node name="LWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(1136, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/LWall"]
+position = Vector2(7.75, 323.25)
+scale = Vector2(16.5, 647.5)
+texture = ExtResource("1_a38pv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LWall"]
+position = Vector2(7.75, 323.25)
+shape = SubResource("RectangleShape2D_i4ewa")
+
+[node name="TopWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(576, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/TopWall"]
+position = Vector2(0, 10)
+scale = Vector2(1150, 18)
+texture = ExtResource("1_a38pv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_6gs71")
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="Row1" type="Node2D" parent="Blocks"]
+
+[node name="Block" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(64, 64)
+
+[node name="Block2" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(128, 64)
+
+[node name="Block3" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(192, 64)
+
+[node name="Block4" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(256, 64)
+
+[node name="Block5" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(320, 64)
+
+[node name="Block6" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(384, 64)
+
+[node name="Block7" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(448, 64)
+
+[node name="Block8" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(512, 64)
+
+[node name="Block9" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(576, 64)
+
+[node name="Block10" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(640, 64)
+
+[node name="Block11" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(704, 64)
+
+[node name="Block12" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(768, 64)
+
+[node name="Block13" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(832, 64)
+
+[node name="Block14" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(896, 64)
+
+[node name="Block15" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(960, 64)
+
+[node name="Block16" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(1024, 64)
+
+[node name="Block17" parent="Blocks/Row1" instance=ExtResource("8_82pwi")]
+position = Vector2(1088, 64)
+
+[node name="Row2" type="Node2D" parent="Blocks"]
+position = Vector2(0, 96)
+
+[node name="Block" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(64, 64)
+
+[node name="Block2" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(128, 64)
+
+[node name="Block3" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(192, 64)
+
+[node name="Block4" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(256, 64)
+
+[node name="Block5" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(320, 64)
+
+[node name="Block6" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(384, 64)
+
+[node name="Block7" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(448, 64)
+
+[node name="Block8" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(512, 64)
+
+[node name="Block9" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(576, 64)
+
+[node name="Block10" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(640, 64)
+
+[node name="Block11" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(704, 64)
+
+[node name="Block12" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(768, 64)
+
+[node name="Block13" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(832, 64)
+
+[node name="Block14" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(896, 64)
+
+[node name="Block15" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(960, 64)
+
+[node name="Block16" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(1024, 64)
+
+[node name="Block17" parent="Blocks/Row2" instance=ExtResource("8_82pwi")]
+position = Vector2(1088, 64)
+
+[node name="Row3" type="Node2D" parent="Blocks"]
+position = Vector2(0, 192)
+
+[node name="Block" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(64, 64)
+
+[node name="Block2" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(128, 64)
+
+[node name="Block3" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(192, 64)
+
+[node name="Block4" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(256, 64)
+
+[node name="Block5" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(320, 64)
+
+[node name="Block6" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(384, 64)
+
+[node name="Block7" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(448, 64)
+
+[node name="Block8" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(512, 64)
+
+[node name="Block9" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(576, 64)
+
+[node name="Block10" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(640, 64)
+
+[node name="Block11" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(704, 64)
+
+[node name="Block12" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(768, 64)
+
+[node name="Block13" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(832, 64)
+
+[node name="Block14" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(896, 64)
+
+[node name="Block15" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(960, 64)
+
+[node name="Block16" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(1024, 64)
+
+[node name="Block17" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
+position = Vector2(1088, 64)
+
+[connection signal="game_over" from="CanvasLayer/Menus" to="CanvasLayer/Menus" method="_on_game_over"]
+[connection signal="pressed" from="CanvasLayer/Menus/StartMenu/StartButton" to="CanvasLayer/Menus" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/StartMenu/ReturnButton" to="CanvasLayer/Menus" method="_on_return_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/EndMenu/QuitButton" to="CanvasLayer/Menus" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/PauseMenu/ExitButton" to="CanvasLayer/Menus" method="_on_exit_button_pressed"]

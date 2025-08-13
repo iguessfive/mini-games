@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ciwmy3udmyodg"]
+
+[ext_resource type="Script" uid="uid://clbhh0gl7q4t3" path="res://gameplay_components/block_breaker/block.gd" id="1_3unt4"]
+[ext_resource type="Texture2D" uid="uid://4mvf24vjsn4w" path="res://art/block_breaker/white_1x1.png" id="2_ruwev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82pwi"]
+size = Vector2(58, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hhij"]
+size = Vector2(64, 64)
+
+[node name="Block" type="StaticBody2D"]
+script = ExtResource("1_3unt4")
+color_01 = Color(0.321808, 0.73, 0.2847, 1)
+color_02 = Color(0.729567, 0.86, 0.258, 1)
+color_03 = Color(0.83, 0.3071, 0.3071, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(64, 64)
+texture = ExtResource("2_ruwev")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_82pwi")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7hhij")
+debug_color = Color(0.357901, 0.518008, 0.88759, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

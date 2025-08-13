@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://22vbpm5oxmpx"]
+[gd_scene load_steps=4 format=3 uid="uid://22vbpm5oxmpx"]
 
+[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="1_wiswg"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_ws2qb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_os0xr"]
@@ -7,12 +8,14 @@ font = ExtResource("1_ws2qb")
 font_size = 48
 
 [node name="Menus" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wiswg")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -24,6 +27,7 @@ grow_vertical = 2
 color = Color(0.1, 0.1, 0.1, 0.498039)
 
 [node name="StartMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchor_left = 0.311632
 anchor_top = 0.197531
@@ -92,56 +96,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Return"
 
-[node name="EndMenu" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchor_left = 0.311632
-anchor_top = 0.197531
-anchor_right = 0.688368
-anchor_bottom = 0.802469
-offset_right = -6.10352e-05
-offset_bottom = 6.10352e-05
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel" type="Panel" parent="EndMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GameOverLabel" type="Label" parent="EndMenu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.164747
-anchor_top = 0.112245
-anchor_right = 0.835253
-anchor_bottom = 0.331633
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "Game Over"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="QuitButton" type="Button" parent="EndMenu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.354839
-anchor_top = 0.59949
-anchor_right = 0.654378
-anchor_bottom = 0.701531
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "Quit
-"
-metadata/_edit_use_anchors_ = true
-
 [node name="PauseMenu" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -188,3 +142,69 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Exit"
 metadata/_edit_use_anchors_ = true
+
+[node name="EndMenu" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="EndMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164747
+anchor_top = 0.112245
+anchor_right = 0.835253
+anchor_bottom = 0.331633
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.410138
+anchor_top = 0.686224
+anchor_right = 0.592166
+anchor_bottom = 0.765306
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35023
+anchor_top = 0.540816
+anchor_right = 0.649769
+anchor_bottom = 0.647959
+offset_bottom = 1.52588e-05
+theme_override_font_sizes/font_size = 24
+text = "Retry"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="game_over" from="." to="." method="_on_game_over"]
+[connection signal="pressed" from="StartMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartMenu/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="PauseMenu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="EndMenu/QuitButton" to="." method="_on_quit_button_pressed"]
