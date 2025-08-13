@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://0kf2c6pbuklo"]
+[gd_scene load_steps=9 format=3 uid="uid://0kf2c6pbuklo"]
 
 [ext_resource type="PackedScene" uid="uid://bplxaj5niub6" path="res://scenes/fruit_slash/slasher_cursor.tscn" id="1_kco6q"]
 [ext_resource type="Script" uid="uid://bm24vudaiwiqc" path="res://gameplay_components/fruit_slash/cannon.gd" id="1_l61y6"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_yk7ds"]
 [ext_resource type="Theme" uid="uid://uay5mr34ptg5" path="res://themes/fruit_slash.tres" id="2_ufly5"]
 [ext_resource type="PackedScene" uid="uid://bs67t7ogrt0l2" path="res://scenes/fruit_slash/fruit.tscn" id="6_2godk"]
+[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="6_sn774"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bdpbr"]
 font = ExtResource("1_yk7ds")
@@ -23,32 +24,14 @@ metadata/_edit_vertical_guides_ = [-122.0]
 
 [node name="LaunchPoints" type="Node2D" parent="Gamplay"]
 
-[node name="LaunchPoint1" type="Marker2D" parent="Gamplay/LaunchPoints"]
+[node name="Cannon" type="Marker2D" parent="Gamplay/LaunchPoints"]
 position = Vector2(-174, 390)
 script = ExtResource("1_l61y6")
-
-[node name="LaunchPoint2" type="Marker2D" parent="Gamplay/LaunchPoints"]
-position = Vector2(157, 794)
-
-[node name="LaunchPoint3" type="Marker2D" parent="Gamplay/LaunchPoints"]
-position = Vector2(371, 940)
-
-[node name="LaunchPoint4" type="Marker2D" parent="Gamplay/LaunchPoints"]
-position = Vector2(623, 835)
-
-[node name="LaunchPoint5" type="Marker2D" parent="Gamplay/LaunchPoints"]
-position = Vector2(913, 943)
-
-[node name="LaunchPoint6" type="Marker2D" parent="Gamplay/LaunchPoints"]
-position = Vector2(1054, 782)
-
-[node name="LaunchPoint7" type="Marker2D" parent="Gamplay/LaunchPoints"]
-position = Vector2(1344, 375)
 
 [node name="GameDurationTimer" type="Timer" parent="Gamplay"]
 
 [node name="Fruit" parent="Gamplay" groups=["fruit"] instance=ExtResource("6_2godk")]
-position = Vector2(60, 266)
+position = Vector2(512, 80)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -78,8 +61,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ufly5")
+script = ExtResource("6_sn774")
 
 [node name="Background" type="ColorRect" parent="CanvasLayer/Menus"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,6 +74,7 @@ grow_vertical = 2
 color = Color(0.1, 0.1, 0.1, 0.498039)
 
 [node name="StartMenu" type="Control" parent="CanvasLayer/Menus"]
+visible = false
 layout_mode = 1
 anchor_left = 0.311632
 anchor_top = 0.197531
@@ -260,3 +246,8 @@ grow_vertical = 2
 theme_type_variation = &"MainButton"
 text = "Exit"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/Menus/StartMenu/StartButton" to="CanvasLayer/Menus" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/StartMenu/ReturnButton" to="CanvasLayer/Menus" method="_on_return_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/EndMenu/QuitButton" to="CanvasLayer/Menus" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/PauseMenu/ExitButton" to="CanvasLayer/Menus" method="_on_exit_button_pressed"]

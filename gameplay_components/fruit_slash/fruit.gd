@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var texture: Texture2D = preload("res://art/fruits/Apple.png")
-@export var slash_force: float = 800.0
-@export var gravity: float = 100.0
+@export var slash_force: float = 300.0
+@export var gravity: float = 250.0
 
 var speed: float = 100.0
 var move_direction: Vector2 = Vector2.RIGHT
@@ -12,11 +12,15 @@ var move_direction: Vector2 = Vector2.RIGHT
 func _ready() -> void:
 	sprite.texture = texture
 
+@warning_ignore("unused_parameter")
+func _process(delta: float) -> void:
+	%H1Sprite.global_rotation = 0.0
+	%H2Sprite.global_rotation = 0.0
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# velocity = move_direction * speed
 	move_and_slide()
 
 func slash_fruit(slash_direction: Vector2) -> void:
@@ -25,10 +29,11 @@ func slash_fruit(slash_direction: Vector2) -> void:
 	%CollisionShape2D.set_deferred("disabled", true)
 
 	%SlashedCase.rotation = slash_direction.angle()
-	add_sprites_to_slashed_case()
 
 	%Half1.velocity = slash_direction * slash_force
 	%Half2.velocity = -slash_direction * slash_force
+	%Half1.gravity = gravity
+	%Half2.gravity = gravity
 
 func add_sprites_to_slashed_case() -> void:
 	var half_sprite_1 = sprite.duplicate()

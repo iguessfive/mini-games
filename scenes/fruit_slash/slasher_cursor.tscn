@@ -9,9 +9,13 @@ radius = 10.0499
 script = ExtResource("1_wvwhb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_l61y6")
 
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
+top_level = true
+position = Vector2(-4, -1)
+width = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
