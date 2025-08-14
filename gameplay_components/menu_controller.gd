@@ -1,5 +1,7 @@
 extends Control
 
+signal start_game
+
 @warning_ignore("unused_signal")
 signal game_over
 
@@ -7,7 +9,7 @@ const SELECTION_SCENE_PATH = "res://main.tscn"
 
 func _on_start_button_pressed() -> void:
 	$StartMenu.visible = false
-	get_tree().paused = false
+	start_game.emit()
 
 func _on_return_button_pressed() -> void:
 	get_tree().change_scene_to_file(SELECTION_SCENE_PATH)

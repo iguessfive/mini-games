@@ -3,22 +3,35 @@ extends CharacterBody2D
 @export var max_speed: float = 200.0
 @export var acceleration: float = 100.0
 @export var deceleration: float = 150.0
-@export var turn_speed: float = 3.0
+@export var turn_speed: float = 2.0
 @export var brake_deceleration: float = 300.0
 @export var turn_threshold: float = 10.0
+@export var slow_down_effect_duration: float = 1.0
 
 var current_speed: float = 0.0
 var lap: int = 0
 var has_touched_mud: bool = false
+var time_tracker: float = 0.0
+
+func _ready() -> void:
+	set_physics_process(false)
 
 func _physics_process(delta: float) -> void:
 	var input_accelerate := Input.is_key_pressed(KEY_SPACE)
 	var input_brake := Input.is_action_pressed("direction_down")
 
-	var current_max_speed = max_speed
-	var current_acceleration := acceleration
-	var current_deceleration := deceleration
-	var current_turn_speed = turn_speed
+	var multiplier := 0.5 if has_touched_mud else 1.0
+
+	if has_touched_mud:
+		time_tracker += delta
+		if time_tracker >= slow_down_effect_duration:
+			has_touched_mud = false
+			time_tracker = 0.0
+
+	var current_max_speed = max_speed * multiplier
+	var current_acceleration := acceleration * multiplier
+	var current_deceleration := deceleration * multiplier
+	var current_turn_speed = turn_speed * multiplier
 
 	if input_accelerate:
 		current_speed += current_acceleration * delta
