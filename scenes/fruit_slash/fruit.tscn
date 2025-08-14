@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bs67t7ogrt0l2"]
 
 [ext_resource type="Script" uid="uid://4ve07je13s2l" path="res://gameplay_components/fruit_slash/fruit.gd" id="1_5fehr"]
-[ext_resource type="Texture2D" uid="uid://dopwhay8eusay" path="res://art/fruits/Banana.png" id="1_88wv2"]
+[ext_resource type="Texture2D" uid="uid://dopwhay8eusay" path="res://art/fruits/banana.png" id="1_88wv2"]
 [ext_resource type="Script" uid="uid://dmyyh30rgurvq" path="res://scenes/fruit_slash/sliced_half.gd" id="3_wcx8k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcx8k"]

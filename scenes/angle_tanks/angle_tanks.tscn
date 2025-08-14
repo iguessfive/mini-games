@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=4 uid="uid://r1j7xso74yb6"]
 
-[ext_resource type="Texture2D" uid="uid://c2vn54c6xc35j" path="res://art/top_down_tanks/sand.png" id="1_cnusa"]
+[ext_resource type="Texture2D" uid="uid://c2vn54c6xc35j" path="res://art/top_down_tanks/sand_tile.png" id="1_cnusa"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_pkhcq"]
 [ext_resource type="PackedScene" uid="uid://clyjmxg6rv7j8" path="res://scenes/angle_tanks/tank_player.tscn" id="1_vxp60"]
 [ext_resource type="Texture2D" uid="uid://cswo8jp6ybpcm" path="res://art/top_down_tanks/crate_metal.png" id="2_vxp60"]

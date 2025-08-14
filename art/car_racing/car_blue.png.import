@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://70c0p3lu55g1"
-path="res://.godot/imported/Kiwi.png-5229be4468ecef7cbae608d89bf466c1.ctex"
+uid="uid://ca3ds5jy5h45q"
+path="res://.godot/imported/car_blue.png-5f6429988b24599a0f3d7a6df6d92206.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/fruits/Kiwi.png"
-dest_files=["res://.godot/imported/Kiwi.png-5229be4468ecef7cbae608d89bf466c1.ctex"]
+source_file="res://art/car_racing/car_blue.png"
+dest_files=["res://.godot/imported/car_blue.png-5f6429988b24599a0f3d7a6df6d92206.ctex"]
 
 [params]
 

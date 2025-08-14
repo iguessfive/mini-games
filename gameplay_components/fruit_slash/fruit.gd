@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var texture: Texture2D = preload("res://art/fruits/Apple.png")
+@export var texture: Texture2D = preload("res://art/fruits/apple.png")
 @export var slash_force: float = 300.0
 @export var gravity: float = 250.0
 

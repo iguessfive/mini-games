@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4mvf24vjsn4w"
-path="res://.godot/imported/white_1x1.png-6ef2f86faa1b559c0f3961923cff9afc.ctex"
+uid="uid://c2vn54c6xc35j"
+path="res://.godot/imported/sand_tile.png-edb289a82961a1665e328b9042892472.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/block_breaker/white_1x1.png"
-dest_files=["res://.godot/imported/white_1x1.png-6ef2f86faa1b559c0f3961923cff9afc.ctex"]
+source_file="res://art/top_down_tanks/sand_tile.png"
+dest_files=["res://.godot/imported/sand_tile.png-edb289a82961a1665e328b9042892472.ctex"]
 
 [params]
 

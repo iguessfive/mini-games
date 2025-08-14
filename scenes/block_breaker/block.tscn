@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ciwmy3udmyodg"]
 
 [ext_resource type="Script" uid="uid://clbhh0gl7q4t3" path="res://gameplay_components/block_breaker/block.gd" id="1_3unt4"]
-[ext_resource type="Texture2D" uid="uid://4mvf24vjsn4w" path="res://art/block_breaker/white_1x1.png" id="2_ruwev"]
+[ext_resource type="Texture2D" uid="uid://4mvf24vjsn4w" path="res://art/white_1x1.png" id="2_ruwev"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82pwi"]
 size = Vector2(58, 58)

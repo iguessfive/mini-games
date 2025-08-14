@@ -27,7 +27,6 @@ grow_vertical = 2
 color = Color(0.1, 0.1, 0.1, 0.498039)
 
 [node name="StartMenu" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchor_left = 0.311632
 anchor_top = 0.197531
@@ -144,6 +143,7 @@ text = "Exit"
 metadata/_edit_use_anchors_ = true
 
 [node name="EndMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchor_left = 0.311632
 anchor_top = 0.197531

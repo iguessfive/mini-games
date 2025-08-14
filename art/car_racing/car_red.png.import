@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnvwvmoeseqa2"
-path="res://.godot/imported/tankRed_barrel2_outline.png-c98eef01ec6cee4aec67b2927c3bf0c8.ctex"
+uid="uid://c1eer1wqpomld"
+path="res://.godot/imported/car_red.png-916ede0d713084cf974f86d33918aa35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/top_down_tanks/tankRed_barrel2_outline.png"
-dest_files=["res://.godot/imported/tankRed_barrel2_outline.png-c98eef01ec6cee4aec67b2927c3bf0c8.ctex"]
+source_file="res://art/car_racing/car_red.png"
+dest_files=["res://.godot/imported/car_red.png-916ede0d713084cf974f86d33918aa35.ctex"]
 
 [params]
 

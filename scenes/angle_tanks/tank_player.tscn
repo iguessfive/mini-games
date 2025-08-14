@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://clyjmxg6rv7j8"]
 
 [ext_resource type="Script" uid="uid://byvis4pkok5q2" path="res://gameplay_components/angle_tanks/tank_player.gd" id="1_v564w"]
-[ext_resource type="Texture2D" uid="uid://m3u45qfoutut" path="res://art/top_down_tanks/tankBody_blue_outline.png" id="2_u284i"]
-[ext_resource type="Texture2D" uid="uid://b1g71bagytvi1" path="res://art/top_down_tanks/tankBlue_barrel2_outline.png" id="3_o5g50"]
+[ext_resource type="Texture2D" uid="uid://m3u45qfoutut" path="res://art/top_down_tanks/tank_body_blue.png" id="2_u284i"]
+[ext_resource type="Texture2D" uid="uid://b1g71bagytvi1" path="res://art/top_down_tanks/barrel_blue.png" id="3_o5g50"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6wdga"]
 radius = 18.6052

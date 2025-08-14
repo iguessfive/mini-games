@@ -20,5 +20,7 @@ func _on_play_button_pressed() -> void:
 			get_tree().change_scene_to_file(FilePath.GAME02)
 		3:
 			get_tree().change_scene_to_file(FilePath.GAME03)
+		4:
+			get_tree().change_scene_to_file(FilePath.GAME04)
 		_:
 			print("Game Unavailable")

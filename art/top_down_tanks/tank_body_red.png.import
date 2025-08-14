@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ux2hcnur5isp"
-path="res://.godot/imported/Orange.png-65724669b5a4aef4c116ceb4ebacf0b6.ctex"
+uid="uid://cmj00nwi37xma"
+path="res://.godot/imported/tank_body_red.png-4be155eb9717628e08cff78bdab5fb0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/fruits/Orange.png"
-dest_files=["res://.godot/imported/Orange.png-65724669b5a4aef4c116ceb4ebacf0b6.ctex"]
+source_file="res://art/top_down_tanks/tank_body_red.png"
+dest_files=["res://.godot/imported/tank_body_red.png-4be155eb9717628e08cff78bdab5fb0c.ctex"]
 
 [params]
 

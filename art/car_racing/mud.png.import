@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6p1p27kskgsy"
-path="res://.godot/imported/Lemon.png-594334fecd0179c9b3bbb88c91fc1bb5.ctex"
+uid="uid://bcyx1o7mnbkvy"
+path="res://.godot/imported/mud.png-2c4ac476c2552160746586da6fd5e236.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/fruits/Lemon.png"
-dest_files=["res://.godot/imported/Lemon.png-594334fecd0179c9b3bbb88c91fc1bb5.ctex"]
+source_file="res://art/car_racing/mud.png"
+dest_files=["res://.godot/imported/mud.png-2c4ac476c2552160746586da6fd5e236.ctex"]
 
 [params]
 

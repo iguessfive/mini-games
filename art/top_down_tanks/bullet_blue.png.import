@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uvnl30of2cwb"
-path="res://.godot/imported/Watermelon.png-929a2c7fc1120e89182f7228efb737ab.ctex"
+uid="uid://b0uwx34okovy6"
+path="res://.godot/imported/bullet_blue.png-1426beb8a30befb0f59b9924fbd6e99f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/fruits/Watermelon.png"
-dest_files=["res://.godot/imported/Watermelon.png-929a2c7fc1120e89182f7228efb737ab.ctex"]
+source_file="res://art/top_down_tanks/bullet_blue.png"
+dest_files=["res://.godot/imported/bullet_blue.png-1426beb8a30befb0f59b9924fbd6e99f.ctex"]
 
 [params]
 

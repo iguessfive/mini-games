@@ -86,7 +86,7 @@ func add_states_to_machine() -> void:
 
 func shoot_bullet() -> void:
 	var bullet := preload("res://scenes/angle_tanks/bulllet.tscn").instantiate()
-	bullet.get_node("Sprite2D").texture = preload("res://art/top_down_tanks/bulletRed1_outline.png")
+	bullet.get_node("Sprite2D").texture = preload("res://art/top_down_tanks/tank_body_red.png")
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = %BulletSpawnPoint.global_position
 	bullet.velocity = -$Pivot.global_transform.y * bullet_speed

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doc7dmc3ag4u1"
-path="res://.godot/imported/bulletRed1_outline.png-c6319272a71861ae1a8f74f34fb8f4fb.ctex"
+uid="uid://dx1ox3y0f1tc1"
+path="res://.godot/imported/track_tiles.png-25c262c969dcfd9bf3b50adb48e7c5f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/top_down_tanks/bulletRed1_outline.png"
-dest_files=["res://.godot/imported/bulletRed1_outline.png-c6319272a71861ae1a8f74f34fb8f4fb.ctex"]
+source_file="res://art/car_racing/track_tiles.png"
+dest_files=["res://.godot/imported/track_tiles.png-25c262c969dcfd9bf3b50adb48e7c5f4.ctex"]
 
 [params]
 
