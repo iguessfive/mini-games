@@ -1,5 +1,7 @@
 extends Node2D
 
+const MAX_LAPS = 3
+
 var has_car_won := false
 
 @onready var countdown_label: Label = $UI/CountdownLabel
@@ -16,7 +18,7 @@ func _process(delta: float) -> void:
 		countdown_label.text = str(countdown_timer.time_left as int)
 
 	for car in cars_in_scene:
-		if car.lap >= 1: 
+		if car.lap >= MAX_LAPS: 
 			game_over(car)
 
 func game_over(car: Node2D) -> void:

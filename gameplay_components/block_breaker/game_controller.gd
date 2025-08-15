@@ -15,3 +15,7 @@ func _process(delta: float) -> void:
 
 func _on_menus_game_over() -> void:
 	%ScoreLabel.text = "Score: %d" % score
+
+
+func _on_menus_start_game() -> void:
+	get_tree().paused = false

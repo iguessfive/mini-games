@@ -1,9 +1,9 @@
 @tool
 extends EditorScript
 
-func _run() -> void:
+func _run():
 	pass
-	
+
 func create_white_1x1() -> void:
 	var img := Image.create(1, 1, false, Image.FORMAT_RGBA8)
 	img.fill(Color.WHITE)

@@ -19,12 +19,18 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		handle_barrel_aim()
-	
-	if event.is_action_pressed("left_click"):
+
+	var input_shoot = (
+		event is InputEventMouseButton 
+		and event.is_pressed() 
+		and event.button_index == MOUSE_BUTTON_LEFT
+	)
+
+	if input_shoot:
 		shoot_bullet()
 
 func shoot_bullet() -> void:
-	var bullet := preload("res://scenes/angle_tanks/bulllet.tscn").instantiate()
+	var bullet := preload("res://scenes/angle_tanks/bullet.tscn").instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = %BulletSpawnPoint.global_position
 	bullet.velocity = -$Pivot.global_transform.y * bullet_speed

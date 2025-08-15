@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1rasrft2vtw1"]
 
-[ext_resource type="Script" uid="uid://dklkk56ha1n0j" path="res://gameplay_components/angle_tanks/bullet.gd" id="1_pi0nk"]
-[ext_resource type="Texture2D" uid="uid://b0uwx34okovy6" path="res://art/top_down_tanks/bullet_blue.png" id="2_pi0nk"]
+[ext_resource type="Script" uid="uid://dklkk56ha1n0j" path="res://gameplay_components/angle_tanks/bullet.gd" id="1_amose"]
+[ext_resource type="Texture2D" uid="uid://b0uwx34okovy6" path="res://art/top_down_tanks/bullet_blue.png" id="2_a4qnp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pi0nk"]
 radius = 4.0
@@ -11,14 +11,14 @@ height = 14.0
 radius = 5.0
 height = 16.0
 
-[node name="Bulllet" type="CharacterBody2D" groups=["bullets"]]
+[node name="Bullet" type="CharacterBody2D" groups=["bullets"]]
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("1_pi0nk")
+script = ExtResource("1_amose")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource("2_pi0nk")
+texture = ExtResource("2_a4qnp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

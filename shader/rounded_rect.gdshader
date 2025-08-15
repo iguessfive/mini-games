@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform float corner_fraction : hint_range(0.0, 1.0) = 0.0; // fraction of min(width, height)
 uniform vec4 rect_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float inner_padding : hint_range(0.0, 100.0) = 0.0; // inner padding in pixels (0 = no padding)
 
 void fragment() {
     // Get sprite size in pixels

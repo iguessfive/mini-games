@@ -515,10 +515,10 @@ position = Vector2(1024, 64)
 [node name="Block17" parent="Blocks/Row3" instance=ExtResource("8_82pwi")]
 position = Vector2(1088, 64)
 
-[node name="MainBackground" type="CanvasLayer" parent="."]
+[node name="Backdrop" type="CanvasLayer" parent="."]
 layer = -10
 
-[node name="ColorRect" type="ColorRect" parent="MainBackground"]
+[node name="ColorRect" type="ColorRect" parent="Backdrop"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -530,6 +530,7 @@ color = Color(0.85, 0.494275, 0.0595, 1)
 
 [connection signal="game_over" from="CanvasLayer/Menus" to="." method="_on_menus_game_over"]
 [connection signal="game_over" from="CanvasLayer/Menus" to="CanvasLayer/Menus" method="_on_game_over"]
+[connection signal="start_game" from="CanvasLayer/Menus" to="." method="_on_menus_start_game"]
 [connection signal="pressed" from="CanvasLayer/Menus/StartMenu/StartButton" to="CanvasLayer/Menus" method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menus/StartMenu/ReturnButton" to="CanvasLayer/Menus" method="_on_return_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menus/EndMenu/QuitButton" to="CanvasLayer/Menus" method="_on_quit_button_pressed"]
