@@ -1,0 +1,300 @@
+[gd_scene load_steps=19 format=4 uid="uid://y3mvbybhecf0"]
+
+[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="1_6r8pi"]
+[ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="2_hfbwg"]
+[ext_resource type="Script" uid="uid://b4if5mt4c1eif" path="res://gameplay_components/checkers/board_handler.gd" id="3_4wp85"]
+[ext_resource type="Texture2D" uid="uid://7jckbm4f7gsi" path="res://art/checkers/board_tiles.png" id="3_hfbwg"]
+[ext_resource type="Texture2D" uid="uid://4mvf24vjsn4w" path="res://art/white_1x1.png" id="4_2pcxl"]
+[ext_resource type="PackedScene" uid="uid://nkhubd5l0vq2" path="res://scenes/checkers/piece_red.tscn" id="5_4f6a8"]
+[ext_resource type="PackedScene" uid="uid://bphgprw1ifir1" path="res://scenes/checkers/piece_blue.tscn" id="6_4wp85"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6r8pi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfbwg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfbwg"]
+bg_color = Color(0.84, 0.1512, 0.24304, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pcxl"]
+bg_color = Color(0.79, 0.1422, 0.228573, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6r8pi"]
+bg_color = Color(0.2806, 0.46177, 0.61, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_2pcxl"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_6r8pi")
+Button/styles/focus = SubResource("StyleBoxEmpty_hfbwg")
+Button/styles/hover = SubResource("StyleBoxFlat_hfbwg")
+Button/styles/normal = SubResource("StyleBoxFlat_2pcxl")
+Button/styles/pressed = SubResource("StyleBoxFlat_hfbwg")
+Panel/styles/panel = SubResource("StyleBoxFlat_6r8pi")
+
+[sub_resource type="LabelSettings" id="LabelSettings_os0xr"]
+font = ExtResource("2_hfbwg")
+font_size = 48
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4f6a8"]
+texture = ExtResource("3_hfbwg")
+texture_region_size = Vector2i(64, 64)
+2:0/0 = 0
+1:0/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_af8c3"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_4f6a8")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4f6a8"]
+resource_name = "pieces"
+scenes/0/scene = ExtResource("5_4f6a8")
+scenes/1/scene = ExtResource("6_4wp85")
+
+[sub_resource type="TileSet" id="TileSet_4wp85"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_4f6a8")
+
+[node name="Checkers" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Menus" type="Control" parent="UI"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_2pcxl")
+script = ExtResource("1_6r8pi")
+
+[node name="StartMenu" type="Control" parent="UI/Menus"]
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="UI/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6r8pi")
+
+[node name="TitleLabel" type="Label" parent="UI/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.252304
+anchor_top = 0.0408163
+anchor_right = 0.747696
+anchor_bottom = 0.206633
+grow_horizontal = 2
+text = "Checkers"
+label_settings = SubResource("LabelSettings_os0xr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="UI/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.142857
+anchor_top = 0.247449
+anchor_right = 0.86636
+anchor_bottom = 0.5
+offset_bottom = -1.52588e-05
+theme_override_font_sizes/normal_font_size = 20
+text = "Jump over all opposing pieces to win."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="UI/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.308756
+anchor_top = 0.647959
+anchor_right = 0.691244
+anchor_bottom = 0.775511
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_hfbwg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2pcxl")
+text = "Start"
+
+[node name="ReturnButton" type="Button" parent="UI/Menus/StartMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.359447
+anchor_top = 0.818878
+anchor_right = 0.647466
+anchor_bottom = 0.933674
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Return"
+
+[node name="PauseMenu" type="Control" parent="UI/Menus"]
+visible = false
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="UI/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25576
+anchor_top = 0.155612
+anchor_right = 0.741936
+anchor_bottom = 0.326531
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="Button" parent="UI/Menus/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373272
+anchor_top = 0.691327
+anchor_right = 0.626728
+anchor_bottom = 0.795919
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+metadata/_edit_use_anchors_ = true
+
+[node name="EndMenu" type="Control" parent="UI/Menus"]
+visible = false
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="UI/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="UI/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164747
+anchor_top = 0.112245
+anchor_right = 0.835253
+anchor_bottom = 0.331633
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="UI/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.410138
+anchor_top = 0.686224
+anchor_right = 0.592166
+anchor_bottom = 0.765306
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="UI/Menus/EndMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35023
+anchor_top = 0.540816
+anchor_right = 0.649769
+anchor_bottom = 0.647959
+offset_bottom = 1.52588e-05
+theme_override_font_sizes/font_size = 24
+text = "Retry"
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.76, 0.6061, 0.418, 1)
+
+[node name="BoardHandler" type="Node2D" parent="."]
+position = Vector2(576, 320)
+script = ExtResource("3_4wp85")
+
+[node name="Board" type="TileMapLayer" parent="BoardHandler"]
+position = Vector2(-256, -256)
+tile_map_data = PackedByteArray("AAAAAAEAAQACAAAAAAAAAAMAAQACAAAAAAAAAAUAAQACAAAAAAAAAAcAAQACAAAAAAABAAAAAQACAAAAAAABAAIAAQACAAAAAAABAAQAAQACAAAAAAABAAYAAQACAAAAAAACAAEAAQACAAAAAAACAAMAAQACAAAAAAACAAUAAQACAAAAAAACAAcAAQACAAAAAAADAAAAAQACAAAAAAADAAIAAQACAAAAAAADAAQAAQACAAAAAAADAAYAAQACAAAAAAAEAAEAAQACAAAAAAAEAAMAAQACAAAAAAAEAAUAAQACAAAAAAAEAAcAAQACAAAAAAAFAAIAAQACAAAAAAAFAAQAAQACAAAAAAAFAAYAAQACAAAAAAAGAAEAAQACAAAAAAAGAAMAAQACAAAAAAAGAAcAAQACAAAAAAAHAAAAAQACAAAAAAAHAAIAAQACAAAAAAAHAAQAAQACAAAAAAAHAAYAAQACAAAAAAAGAAUAAQACAAAAAAAFAAAAAQACAAAAAAA=")
+tile_set = SubResource("TileSet_af8c3")
+
+[node name="NonPlayableCellsSprite" type="Sprite2D" parent="BoardHandler/Board"]
+z_index = -5
+position = Vector2(256, 256)
+scale = Vector2(512, 512)
+texture = ExtResource("4_2pcxl")
+
+[node name="GameState" type="TileMapLayer" parent="BoardHandler"]
+position = Vector2(-256, -256)
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAQABAAIAAAAAAAAAAQACAAEAAAAAAAAAAQADAAIAAAAAAAAAAQAAAAUAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAAAAAAAAAAAAQABAAYAAAAAAAAAAAACAAUAAAAAAAAAAAACAAcAAAAAAAAAAAADAAAAAAAAAAAAAQADAAYAAAAAAAAAAAAEAAEAAAAAAAAAAQAEAAUAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAAAAAAAAAAAAQAFAAIAAAAAAAAAAQAFAAYAAAAAAAAAAAAGAAEAAAAAAAAAAQAGAAUAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAAAAAAAAAAAAQAHAAIAAAAAAAAAAQAHAAYAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_4wp85")
+
+[connection signal="game_over" from="UI/Menus" to="UI/Menus" method="_on_game_over"]
+[connection signal="pressed" from="UI/Menus/StartMenu/StartButton" to="UI/Menus" method="_on_start_button_pressed"]
+[connection signal="pressed" from="UI/Menus/StartMenu/ReturnButton" to="UI/Menus" method="_on_return_button_pressed"]
+[connection signal="pressed" from="UI/Menus/PauseMenu/ExitButton" to="UI/Menus" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/Menus/EndMenu/QuitButton" to="UI/Menus" method="_on_quit_button_pressed"]

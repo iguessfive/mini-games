@@ -2,7 +2,7 @@ extends Node2D
 
 const BOARD_TEST_CASE = preload("res://tests/ninefold/test_board_model.gd")
 
-var board = BoardModel.new()
+var board_model = NineFoldsBoardModel.new()
 
 @onready var macro_board = $MacroBoard
 @onready var micro_boards = $MicroBoards
@@ -22,4 +22,3 @@ func cross_large() -> void:
 	sprite.texture = preload("res://art/ninefolds/cross_large.png")
 	sprite.global_position = macro_board.map_to_local(cell_pos) # center the sprite in the cell
 	macro_board.add_child(sprite)
-

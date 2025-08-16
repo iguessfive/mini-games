@@ -1,4 +1,4 @@
-class_name BoardModel extends RefCounted
+class_name NineFoldsBoardModel extends RefCounted
 
 signal winner_found(board_type)
 signal no_winner

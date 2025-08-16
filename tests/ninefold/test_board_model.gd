@@ -20,7 +20,7 @@ func reset_test_state():
 	no_winner_emitted = false
 
 func test_winner_verification() -> bool:
-	var board_model = BoardModel.new()
+	var board_model = NineFoldsBoardModel.new()
 	
 	# Connect signals to our test methods
 	board_model.winner_found.connect(_on_winner_found)
@@ -30,50 +30,50 @@ func test_winner_verification() -> bool:
 	reset_test_state()
 	board_model.micro_grid_current = Vector2i(0, 0)
 	var micro_board = board_model.macro_board_status[Vector2i.ZERO]["board"]
-	micro_board[Vector2i(0, 0)]["token"] = BoardModel.CIRCLE
-	micro_board[Vector2i(1, 0)]["token"] = BoardModel.CIRCLE
-	micro_board[Vector2i(2, 0)]["token"] = BoardModel.CIRCLE
-	winner_token = board_model.verify_winner(BoardModel.MICRO)
+	micro_board[Vector2i(0, 0)]["token"] = NineFoldsBoardModel.CIRCLE
+	micro_board[Vector2i(1, 0)]["token"] = NineFoldsBoardModel.CIRCLE
+	micro_board[Vector2i(2, 0)]["token"] = NineFoldsBoardModel.CIRCLE
+	winner_token = board_model.verify_winner(NineFoldsBoardModel.MICRO)
 	assert(winner_emitted, "winner_found signal should have been emitted for micro board row win")
-	assert(winner_token == BoardModel.CIRCLE, "Winner token should be CIRCLE but got: " + str(winner_token))
-	assert(winner_board_type == BoardModel.MICRO, "Winner board type should be MICRO but got: " + str(winner_board_type))
+	assert(winner_token == NineFoldsBoardModel.CIRCLE, "Winner token should be CIRCLE but got: " + str(winner_token))
+	assert(winner_board_type == NineFoldsBoardModel.MICRO, "Winner board type should be MICRO but got: " + str(winner_board_type))
 
 	# Test macro board win (simulate a column win for CROSS)
 	reset_test_state()
-	board_model.macro_board_status[Vector2i(0, 0)]["token"] = BoardModel.CROSS
-	board_model.macro_board_status[Vector2i(0, 1)]["token"] = BoardModel.CROSS
-	board_model.macro_board_status[Vector2i(0, 2)]["token"] = BoardModel.CROSS
-	winner_token = board_model.verify_winner(BoardModel.MACRO)
+	board_model.macro_board_status[Vector2i(0, 0)]["token"] = NineFoldsBoardModel.CROSS
+	board_model.macro_board_status[Vector2i(0, 1)]["token"] = NineFoldsBoardModel.CROSS
+	board_model.macro_board_status[Vector2i(0, 2)]["token"] = NineFoldsBoardModel.CROSS
+	winner_token = board_model.verify_winner(NineFoldsBoardModel.MACRO)
 	assert(winner_emitted, "winner_found signal should have been emitted for macro board column win")
-	assert(winner_token == BoardModel.CROSS, "Winner token should be CROSS but got: " + str(winner_token))
-	assert(winner_board_type == BoardModel.MACRO, "Winner board type should be MACRO but got: " + str(winner_board_type))
+	assert(winner_token == NineFoldsBoardModel.CROSS, "Winner token should be CROSS but got: " + str(winner_token))
+	assert(winner_board_type == NineFoldsBoardModel.MACRO, "Winner board type should be MACRO but got: " + str(winner_board_type))
 
 	# Test no winner
 	reset_test_state()
-	board_model.macro_board_status[Vector2i(0, 0)]["token"] = BoardModel.CIRCLE
-	board_model.macro_board_status[Vector2i(0, 1)]["token"] = BoardModel.CROSS
-	board_model.macro_board_status[Vector2i(0, 2)]["token"] = BoardModel.EMPTY
-	winner_token = board_model.verify_winner(BoardModel.MACRO)
+	board_model.macro_board_status[Vector2i(0, 0)]["token"] = NineFoldsBoardModel.CIRCLE
+	board_model.macro_board_status[Vector2i(0, 1)]["token"] = NineFoldsBoardModel.CROSS
+	board_model.macro_board_status[Vector2i(0, 2)]["token"] = NineFoldsBoardModel.EMPTY
+	winner_token = board_model.verify_winner(NineFoldsBoardModel.MACRO)
 	assert(no_winner_emitted, "no_winner signal should have been emitted when there's no winner")
 	assert(not winner_emitted, "winner_found signal should NOT have been emitted when there's no winner")
-	assert(winner_token == BoardModel.EMPTY, "Winner token should be EMPTY when there's no winner but got: " + str(winner_token))
+	assert(winner_token == NineFoldsBoardModel.EMPTY, "Winner token should be EMPTY when there's no winner but got: " + str(winner_token))
 
 	print("Winner verification test passed")
 
 	return true
 
 func test_has_added_move() -> bool:
-	var board_model = BoardModel.new()
+	var board_model = NineFoldsBoardModel.new()
 	board_model.winner_found.connect(_on_winner_found)
 	board_model.no_winner.connect(_on_no_winner)
 
 	reset_test_state()
 	var chosen_point = Vector2i(2, 2)
-	var token = BoardModel.CROSS
+	var token = NineFoldsBoardModel.CROSS
 
 	# The cell should be empty before the move
 	assert(
-		board_model.macro_board_status[Vector2i(1, 1)]["board"][chosen_point]["token"] == BoardModel.EMPTY,
+		board_model.macro_board_status[Vector2i(1, 1)]["board"][chosen_point]["token"] == NineFoldsBoardModel.EMPTY,
 		"Cell should be EMPTY before move"
 	)
 

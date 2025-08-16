@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bphgprw1ifir1"]
+
+[ext_resource type="Texture2D" uid="uid://cvusv60ftjaqi" path="res://art/checkers/piece_blue.png" id="1_xj0ho"]
+[ext_resource type="Texture2D" uid="uid://1j6dpv06nws0" path="res://art/checkers/crown.png" id="2_omsic"]
+[ext_resource type="Script" uid="uid://bbp1f3c0torqd" path="res://gameplay_components/checkers/piece.gd" id="3_omsic"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtvu2"]
+radius = 23.0217
+
+[node name="PieceBlue" type="Area2D"]
+script = ExtResource("3_omsic")
+piece_type = "blue"
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup"]
+texture = ExtResource("1_xj0ho")
+
+[node name="CrownSprite" type="Sprite2D" parent="CanvasGroup"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.098, 0.5194, 0.7, 1)
+position = Vector2(0, -1)
+scale = Vector2(0.320312, 0.320312)
+texture = ExtResource("2_omsic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_vtvu2")
