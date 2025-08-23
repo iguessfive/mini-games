@@ -21,10 +21,12 @@ func _on_exit_button_pressed() -> void:
 	get_tree().change_scene_to_file(SELECTION_SCENE_PATH)
 
 func _input(event: InputEvent) -> void:
+	if not visible:
+		return
+	
 	if event is InputEventKey and event.pressed and event.keycode == KEY_TAB:
 		$PauseMenu.visible = not $PauseMenu.visible
 		get_tree().paused = $PauseMenu.visible
 
 func _on_game_over() -> void:
 	$EndMenu.visible = true
-

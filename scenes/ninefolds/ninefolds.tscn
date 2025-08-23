@@ -1,11 +1,21 @@
-[gd_scene load_steps=16 format=4 uid="uid://ceboqbet1m4rl"]
+[gd_scene load_steps=17 format=4 uid="uid://ceboqbet1m4rl"]
 
 [ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="1_a7nk1"]
+[ext_resource type="Script" uid="uid://bfc0fa33nitdu" path="res://gameplay_components/ninefolds/game_controller.gd" id="1_nm20j"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="2_nm20j"]
 [ext_resource type="Script" uid="uid://dtlty8jnp4vqi" path="res://gameplay_components/ninefolds/board_controller.gd" id="3_yg52c"]
 [ext_resource type="Texture2D" uid="uid://dd7734ynanhlw" path="res://art/ninefolds/cell_large.png" id="4_2pm6q"]
 [ext_resource type="PackedScene" uid="uid://cwypvkfhe7p10" path="res://scenes/ninefolds/micro_board.tscn" id="5_pemd1"]
 [ext_resource type="Script" uid="uid://b7yisrp6a4vpu" path="res://gameplay_components/ninefolds/micro_board.gd" id="6_xe7jy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6y21s"]
+texture = ExtResource("4_2pm6q")
+texture_region_size = Vector2i(198, 198)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_s8r2v"]
+tile_size = Vector2i(198, 198)
+sources/1 = SubResource("TileSetAtlasSource_6y21s")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdt8y"]
 
@@ -59,28 +69,67 @@ Panel/styles/panel = SubResource("StyleBoxFlat_eqktv")
 font = ExtResource("2_nm20j")
 font_size = 48
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6y21s"]
-texture = ExtResource("4_2pm6q")
-texture_region_size = Vector2i(198, 198)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_s8r2v"]
-tile_size = Vector2i(198, 198)
-sources/1 = SubResource("TileSetAtlasSource_6y21s")
-
 [node name="Ninefold" type="Node2D"]
+script = ExtResource("1_nm20j")
+
+[node name="BoardController" type="Node2D" parent="."]
+script = ExtResource("3_yg52c")
+
+[node name="MacroBoard" type="TileMapLayer" parent="BoardController"]
+position = Vector2(259, 31)
+tile_map_data = PackedByteArray("AAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_s8r2v")
+
+[node name="MicroBoards" type="Node2D" parent="BoardController"]
+
+[node name="MicroBoard1" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
+position = Vector2(286, 61)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard2" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
+position = Vector2(483, 61)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard3" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
+position = Vector2(680, 61)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard4" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
+position = Vector2(680, 259)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard5" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
+position = Vector2(484, 259)
+script = ExtResource("6_xe7jy")
+is_playable = true
+
+[node name="MicroBoard6" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
+position = Vector2(286, 259)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard7" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
+position = Vector2(286, 455)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard8" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
+position = Vector2(482, 455)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard9" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
+position = Vector2(680, 455)
+script = ExtResource("6_xe7jy")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Menus" type="Control" parent="UI"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = SubResource("Theme_iawag")
 script = ExtResource("1_a7nk1")
 
@@ -264,53 +313,6 @@ theme_override_font_sizes/font_size = 24
 text = "Retry"
 metadata/_edit_use_anchors_ = true
 
-[node name="BoardController" type="Node2D" parent="."]
-script = ExtResource("3_yg52c")
-
-[node name="MacroBoard" type="TileMapLayer" parent="BoardController"]
-position = Vector2(259, 31)
-tile_map_data = PackedByteArray("AAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAA=")
-tile_set = SubResource("TileSet_s8r2v")
-
-[node name="MicroBoards" type="Node2D" parent="BoardController"]
-
-[node name="MicroBoard1" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
-position = Vector2(286, 61)
-script = ExtResource("6_xe7jy")
-is_playable = true
-
-[node name="MicroBoard2" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
-position = Vector2(483, 61)
-script = ExtResource("6_xe7jy")
-
-[node name="MicroBoard3" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
-position = Vector2(680, 61)
-script = ExtResource("6_xe7jy")
-
-[node name="MicroBoard4" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
-position = Vector2(680, 259)
-script = ExtResource("6_xe7jy")
-
-[node name="MicroBoard5" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
-position = Vector2(484, 259)
-script = ExtResource("6_xe7jy")
-
-[node name="MicroBoard6" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
-position = Vector2(286, 259)
-script = ExtResource("6_xe7jy")
-
-[node name="MicroBoard7" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
-position = Vector2(286, 455)
-script = ExtResource("6_xe7jy")
-
-[node name="MicroBoard8" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
-position = Vector2(482, 455)
-script = ExtResource("6_xe7jy")
-
-[node name="MicroBoard9" parent="BoardController/MicroBoards" instance=ExtResource("5_pemd1")]
-position = Vector2(680, 455)
-script = ExtResource("6_xe7jy")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -10
 
@@ -326,6 +328,7 @@ mouse_filter = 2
 color = Color(1, 0.721, 0.38, 1)
 
 [connection signal="game_over" from="UI/Menus" to="UI/Menus" method="_on_game_over"]
+[connection signal="start_game" from="UI/Menus" to="." method="_on_menus_start_game"]
 [connection signal="pressed" from="UI/Menus/StartMenu/StartButton" to="UI/Menus" method="_on_start_button_pressed"]
 [connection signal="pressed" from="UI/Menus/StartMenu/ReturnButton" to="UI/Menus" method="_on_return_button_pressed"]
 [connection signal="pressed" from="UI/Menus/PauseMenu/ExitButton" to="UI/Menus" method="_on_exit_button_pressed"]

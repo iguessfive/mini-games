@@ -71,13 +71,13 @@ sources/0 = SubResource("TileSetScenesCollectionSource_4f6a8")
 
 [node name="Menus" type="Control" parent="UI"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = SubResource("Theme_2pcxl")
 script = ExtResource("1_6r8pi")
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=4 uid="uid://r1j7xso74yb6"]
+[gd_scene load_steps=20 format=4 uid="uid://r1j7xso74yb6"]
 
 [ext_resource type="Texture2D" uid="uid://c2vn54c6xc35j" path="res://art/top_down_tanks/sand_tile.png" id="1_cnusa"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_pkhcq"]
 [ext_resource type="PackedScene" uid="uid://clyjmxg6rv7j8" path="res://scenes/angle_tanks/tank_player.tscn" id="1_vxp60"]
 [ext_resource type="Texture2D" uid="uid://cswo8jp6ybpcm" path="res://art/top_down_tanks/crate_metal.png" id="2_vxp60"]
 [ext_resource type="PackedScene" uid="uid://cv0mbpforokqi" path="res://scenes/angle_tanks/tank_enemy.tscn" id="5_6wdga"]
+[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="5_mtiuc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6wdga"]
 texture = ExtResource("1_cnusa")
@@ -123,7 +124,7 @@ tile_set = SubResource("TileSet_x3cnu")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Menus" type="Control" parent="CanvasLayer"]
-visible = false
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -131,15 +132,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_6wdga")
-
-[node name="Background" type="ColorRect" parent="CanvasLayer/Menus"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.1, 0.1, 0.1, 0.498039)
+script = ExtResource("5_mtiuc")
 
 [node name="StartMenu" type="Control" parent="CanvasLayer/Menus"]
 layout_mode = 1
@@ -312,3 +305,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Exit"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/Menus/StartMenu/StartButton" to="CanvasLayer/Menus" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/StartMenu/ReturnButton" to="CanvasLayer/Menus" method="_on_return_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/EndMenu/QuitButton" to="CanvasLayer/Menus" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/PauseMenu/ExitButton" to="CanvasLayer/Menus" method="_on_exit_button_pressed"]
