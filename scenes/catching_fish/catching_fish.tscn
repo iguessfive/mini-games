@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://22vbpm5oxmpx"]
+[gd_scene load_steps=4 format=3 uid="uid://4hkhgkhfgf22"]
 
-[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="1_wiswg"]
-[ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_ws2qb"]
+[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="1_n7k6d"]
+[ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="2_3qujv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_os0xr"]
-font = ExtResource("1_ws2qb")
+font = ExtResource("2_3qujv")
 font_size = 48
 
-[node name="Menus" type="Control"]
+[node name="FishingGame" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menus" type="Control" parent="CanvasLayer"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -16,9 +20,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_wiswg")
+script = ExtResource("1_n7k6d")
 
-[node name="StartMenu" type="Control" parent="."]
+[node name="StartMenu" type="Control" parent="CanvasLayer/Menus"]
 layout_mode = 1
 anchor_left = 0.311632
 anchor_top = 0.197531
@@ -28,7 +32,7 @@ offset_right = -6.10352e-05
 offset_bottom = 6.10352e-05
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="StartMenu"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/StartMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +40,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TitleLabel" type="Label" parent="StartMenu"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/Menus/StartMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.252304
@@ -44,12 +48,12 @@ anchor_top = 0.0408163
 anchor_right = 0.747696
 anchor_bottom = 0.206633
 grow_horizontal = 2
-text = "Game Title"
+text = "Catching Fish"
 label_settings = SubResource("LabelSettings_os0xr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="RichTextLabel" parent="StartMenu"]
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/Menus/StartMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.142857
@@ -58,12 +62,12 @@ anchor_right = 0.86636
 anchor_bottom = 0.5
 offset_bottom = -1.52588e-05
 theme_override_font_sizes/normal_font_size = 20
-text = "Describe the goal of the game"
+text = "Collect fish and sell at market"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartButton" type="Button" parent="StartMenu"]
+[node name="StartButton" type="Button" parent="CanvasLayer/Menus/StartMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.308756
@@ -75,7 +79,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Start"
 
-[node name="ReturnButton" type="Button" parent="StartMenu"]
+[node name="ReturnButton" type="Button" parent="CanvasLayer/Menus/StartMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.359447
@@ -87,7 +91,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Return"
 
-[node name="PauseMenu" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="CanvasLayer/Menus"]
 visible = false
 layout_mode = 1
 anchor_left = 0.311632
@@ -100,7 +104,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="PauseMenu"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/PauseMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,7 +112,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="PauseMenu"]
+[node name="Label" type="Label" parent="CanvasLayer/Menus/PauseMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25576
@@ -122,7 +126,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ExitButton" type="Button" parent="PauseMenu"]
+[node name="ExitButton" type="Button" parent="CanvasLayer/Menus/PauseMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.373272
@@ -134,7 +138,7 @@ grow_vertical = 2
 text = "Exit"
 metadata/_edit_use_anchors_ = true
 
-[node name="EndMenu" type="Control" parent="."]
+[node name="EndMenu" type="Control" parent="CanvasLayer/Menus"]
 visible = false
 layout_mode = 1
 anchor_left = 0.311632
@@ -147,7 +151,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="EndMenu"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Menus/EndMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,7 +159,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameOverLabel" type="Label" parent="EndMenu"]
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/Menus/EndMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.164747
@@ -170,7 +174,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="QuitButton" type="Button" parent="EndMenu"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/Menus/EndMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.410138
@@ -183,7 +187,7 @@ text = "Quit
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="EndMenu"]
+[node name="Button" type="Button" parent="CanvasLayer/Menus/EndMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.35023
@@ -195,8 +199,8 @@ theme_override_font_sizes/font_size = 24
 text = "Retry"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="game_over" from="." to="." method="_on_game_over"]
-[connection signal="pressed" from="StartMenu/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="StartMenu/ReturnButton" to="." method="_on_return_button_pressed"]
-[connection signal="pressed" from="PauseMenu/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="EndMenu/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="game_over" from="CanvasLayer/Menus" to="CanvasLayer/Menus" method="_on_game_over"]
+[connection signal="pressed" from="CanvasLayer/Menus/StartMenu/StartButton" to="CanvasLayer/Menus" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/StartMenu/ReturnButton" to="CanvasLayer/Menus" method="_on_return_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/PauseMenu/ExitButton" to="CanvasLayer/Menus" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menus/EndMenu/QuitButton" to="CanvasLayer/Menus" method="_on_quit_button_pressed"]

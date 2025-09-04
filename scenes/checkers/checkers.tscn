@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=4 uid="uid://y3mvbybhecf0"]
+[gd_scene load_steps=20 format=4 uid="uid://y3mvbybhecf0"]
 
 [ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="1_6r8pi"]
+[ext_resource type="Script" uid="uid://drwv0yijf26gc" path="res://gameplay_components/checkers/game_controller.gd" id="1_ptsoi"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="2_hfbwg"]
 [ext_resource type="Script" uid="uid://b4if5mt4c1eif" path="res://gameplay_components/checkers/board_handler.gd" id="3_4wp85"]
 [ext_resource type="Texture2D" uid="uid://7jckbm4f7gsi" path="res://art/checkers/board_tiles.png" id="3_hfbwg"]
@@ -66,6 +67,7 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetScenesCollectionSource_4f6a8")
 
 [node name="Checkers" type="Node2D"]
+script = ExtResource("1_ptsoi")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -294,6 +296,7 @@ tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAQABAAIAAAAAAAAAAQACAAEAAAAAAAA
 tile_set = SubResource("TileSet_4wp85")
 
 [connection signal="game_over" from="UI/Menus" to="UI/Menus" method="_on_game_over"]
+[connection signal="start_game" from="UI/Menus" to="." method="_on_menus_start_game"]
 [connection signal="pressed" from="UI/Menus/StartMenu/StartButton" to="UI/Menus" method="_on_start_button_pressed"]
 [connection signal="pressed" from="UI/Menus/StartMenu/ReturnButton" to="UI/Menus" method="_on_return_button_pressed"]
 [connection signal="pressed" from="UI/Menus/PauseMenu/ExitButton" to="UI/Menus" method="_on_exit_button_pressed"]

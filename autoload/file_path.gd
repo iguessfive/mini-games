@@ -6,3 +6,4 @@ const GAME03: StringName = StringName("res://scenes/block_breaker/block_breaker.
 const GAME04: StringName = StringName("res://scenes/race_cars/race_cars.tscn")
 const GAME05: StringName = StringName("res://scenes/ninefolds/ninefolds.tscn")
 const GAME06: StringName = StringName("res://scenes/checkers/checkers.tscn")
+const GAME07: StringName = StringName("res://scenes/catching_fish/catching_fish.tscn")

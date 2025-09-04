@@ -12,6 +12,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_272bh"]
 
 [node name="SelectionContainer" type="PanelContainer"]
+offset_right = 327.0
+offset_bottom = 65.0
 theme_override_styles/panel = ExtResource("1_1q7bv")
 script = ExtResource("2_ptbgw")
 title = &"Fruit Slash"
@@ -44,11 +46,13 @@ size_flags_stretch_ratio = 8.0
 text = "Game Title"
 label_settings = ExtResource("4_2hswk")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7mycd")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_272bh")
 theme_override_styles/hover = ExtResource("5_r68ol")

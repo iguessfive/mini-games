@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=4 uid="uid://r1j7xso74yb6"]
+[gd_scene load_steps=21 format=4 uid="uid://r1j7xso74yb6"]
 
 [ext_resource type="Texture2D" uid="uid://c2vn54c6xc35j" path="res://art/top_down_tanks/sand_tile.png" id="1_cnusa"]
+[ext_resource type="Script" uid="uid://dincywgscdk8i" path="res://gameplay_components/angle_tanks/game_controller.gd" id="1_kn8ev"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_pkhcq"]
 [ext_resource type="PackedScene" uid="uid://clyjmxg6rv7j8" path="res://scenes/angle_tanks/tank_player.tscn" id="1_vxp60"]
 [ext_resource type="Texture2D" uid="uid://cswo8jp6ybpcm" path="res://art/top_down_tanks/crate_metal.png" id="2_vxp60"]
@@ -82,6 +83,7 @@ font_size = 48
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cnusa"]
 
 [node name="AngleTanks" type="Node2D"]
+script = ExtResource("1_kn8ev")
 
 [node name="PlayerTank" parent="." instance=ExtResource("1_vxp60")]
 position = Vector2(321, 200)
@@ -131,6 +133,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = SubResource("Theme_6wdga")
 script = ExtResource("5_mtiuc")
 
@@ -306,6 +309,7 @@ grow_vertical = 2
 text = "Exit"
 metadata/_edit_use_anchors_ = true
 
+[connection signal="start_game" from="CanvasLayer/Menus" to="." method="_on_menus_start_game"]
 [connection signal="pressed" from="CanvasLayer/Menus/StartMenu/StartButton" to="CanvasLayer/Menus" method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menus/StartMenu/ReturnButton" to="CanvasLayer/Menus" method="_on_return_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menus/EndMenu/QuitButton" to="CanvasLayer/Menus" method="_on_quit_button_pressed"]
