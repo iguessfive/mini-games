@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://nkhubd5l0vq2"]
+[gd_scene format=3 uid="uid://nkhubd5l0vq2"]
 
 [ext_resource type="Texture2D" uid="uid://ey32xwnv0pan" path="res://art/checkers/piece_red.png" id="1_vtvu2"]
 [ext_resource type="Texture2D" uid="uid://1j6dpv06nws0" path="res://art/checkers/crown.png" id="2_2vyac"]
-[ext_resource type="Script" uid="uid://bbp1f3c0torqd" path="res://gameplay_components/checkers/piece.gd" id="3_2vyac"]
+[ext_resource type="Script" uid="uid://bbp1f3c0torqd" path="res://scripts/checkers/piece.gd" id="3_2vyac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtvu2"]
 radius = 23.0217

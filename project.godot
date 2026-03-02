@@ -8,16 +8,16 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="mini-games"
 run/main_scene="uid://uitsnfgaivho"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[autoload]
-
-FilePath="*res://autoload/file_path.gd"
 
 [input]
 

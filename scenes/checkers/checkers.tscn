@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=4 uid="uid://y3mvbybhecf0"]
+[gd_scene format=4 uid="uid://y3mvbybhecf0"]
 
-[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="1_6r8pi"]
-[ext_resource type="Script" uid="uid://drwv0yijf26gc" path="res://gameplay_components/checkers/game_controller.gd" id="1_ptsoi"]
+[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://scripts/menu_controller.gd" id="1_6r8pi"]
+[ext_resource type="Script" uid="uid://drwv0yijf26gc" path="res://scripts/checkers/game_controller.gd" id="1_ptsoi"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="2_hfbwg"]
-[ext_resource type="Script" uid="uid://b4if5mt4c1eif" path="res://gameplay_components/checkers/board_handler.gd" id="3_4wp85"]
+[ext_resource type="Script" uid="uid://b4if5mt4c1eif" path="res://scripts/checkers/board_handler.gd" id="3_4wp85"]
 [ext_resource type="Texture2D" uid="uid://7jckbm4f7gsi" path="res://art/checkers/board_tiles.png" id="3_hfbwg"]
 [ext_resource type="Texture2D" uid="uid://4mvf24vjsn4w" path="res://art/white_1x1.png" id="4_2pcxl"]
 [ext_resource type="PackedScene" uid="uid://nkhubd5l0vq2" path="res://scenes/checkers/piece_red.tscn" id="5_4f6a8"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1rasrft2vtw1"]
+[gd_scene format=3 uid="uid://d1rasrft2vtw1"]
 
-[ext_resource type="Script" uid="uid://dklkk56ha1n0j" path="res://gameplay_components/angle_tanks/bullet.gd" id="1_amose"]
+[ext_resource type="Script" uid="uid://dklkk56ha1n0j" path="res://scripts/angle_tanks/bullet.gd" id="1_amose"]
 [ext_resource type="Texture2D" uid="uid://b0uwx34okovy6" path="res://art/top_down_tanks/bullet_blue.png" id="2_a4qnp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pi0nk"]

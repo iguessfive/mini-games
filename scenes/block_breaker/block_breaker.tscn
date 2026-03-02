@@ -1,12 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://drclxwamm7dak"]
+[gd_scene format=3 uid="uid://drclxwamm7dak"]
 
 [ext_resource type="Texture2D" uid="uid://4mvf24vjsn4w" path="res://art/white_1x1.png" id="1_a38pv"]
-[ext_resource type="Script" uid="uid://b47m20h4w6p8k" path="res://gameplay_components/block_breaker/game_controller.gd" id="1_bvf43"]
-[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="1_e0yfd"]
-[ext_resource type="Script" uid="uid://dxtny8vdfrvba" path="res://gameplay_components/block_breaker/paddle.gd" id="1_i4ewa"]
+[ext_resource type="Script" uid="uid://b47m20h4w6p8k" path="res://scripts/block_breaker/game_controller.gd" id="1_bvf43"]
+[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://scripts/menu_controller.gd" id="1_e0yfd"]
+[ext_resource type="Script" uid="uid://dxtny8vdfrvba" path="res://scripts/block_breaker/paddle.gd" id="1_i4ewa"]
 [ext_resource type="Shader" uid="uid://co3m7lttbh5rr" path="res://shader/rounded_rect.gdshader" id="1_j68cb"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_ubpm8"]
-[ext_resource type="Script" uid="uid://bh30orulhoewo" path="res://gameplay_components/block_breaker/ball.gd" id="4_6gs71"]
+[ext_resource type="Script" uid="uid://bh30orulhoewo" path="res://scripts/block_breaker/ball.gd" id="4_6gs71"]
 [ext_resource type="PackedScene" uid="uid://ciwmy3udmyodg" path="res://scenes/block_breaker/block.tscn" id="8_82pwi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a38pv"]

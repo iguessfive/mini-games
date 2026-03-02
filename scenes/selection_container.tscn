@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bclb7sha5apm6"]
+[gd_scene format=3 uid="uid://bclb7sha5apm6"]
 
 [ext_resource type="StyleBox" uid="uid://da4t1xyqp4ygo" path="res://style_box/container_background.tres" id="1_1q7bv"]
-[ext_resource type="Script" uid="uid://dod6bnea2m2gl" path="res://gameplay_components/selection_container.gd" id="2_ptbgw"]
+[ext_resource type="Script" uid="uid://dod6bnea2m2gl" path="res://scripts/selection_container.gd" id="2_ptbgw"]
 [ext_resource type="LabelSettings" uid="uid://b02jthouq57m8" path="res://label_settings/index_label.tres" id="3_vt86r"]
 [ext_resource type="LabelSettings" uid="uid://bbvs0m1e4ai2a" path="res://label_settings/title_label.tres" id="4_2hswk"]
 [ext_resource type="StyleBox" uid="uid://b4x1bdscqy1j4" path="res://style_box/main_play_bh.tres" id="5_r68ol"]

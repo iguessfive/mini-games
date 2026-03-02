@@ -1,12 +1,12 @@
-[gd_scene load_steps=21 format=4 uid="uid://r1j7xso74yb6"]
+[gd_scene format=4 uid="uid://r1j7xso74yb6"]
 
 [ext_resource type="Texture2D" uid="uid://c2vn54c6xc35j" path="res://art/top_down_tanks/sand_tile.png" id="1_cnusa"]
-[ext_resource type="Script" uid="uid://dincywgscdk8i" path="res://gameplay_components/angle_tanks/game_controller.gd" id="1_kn8ev"]
+[ext_resource type="Script" uid="uid://dincywgscdk8i" path="res://scripts/angle_tanks/game_controller.gd" id="1_kn8ev"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_pkhcq"]
 [ext_resource type="PackedScene" uid="uid://clyjmxg6rv7j8" path="res://scenes/angle_tanks/tank_player.tscn" id="1_vxp60"]
 [ext_resource type="Texture2D" uid="uid://cswo8jp6ybpcm" path="res://art/top_down_tanks/crate_metal.png" id="2_vxp60"]
 [ext_resource type="PackedScene" uid="uid://cv0mbpforokqi" path="res://scenes/angle_tanks/tank_enemy.tscn" id="5_6wdga"]
-[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="5_mtiuc"]
+[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://scripts/menu_controller.gd" id="5_mtiuc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6wdga"]
 texture = ExtResource("1_cnusa")

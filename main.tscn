@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://uitsnfgaivho"]
+[gd_scene format=3 uid="uid://uitsnfgaivho"]
 
 [ext_resource type="Theme" uid="uid://b1wx71ac8k0l" path="res://themes/main_theme.tres" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bclb7sha5apm6" path="res://scenes/selection_container.tscn" id="2_0xm2m"]
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" unique_id=536168522]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7mycd")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=614392163]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.7125, 0.75, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=379362766]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0277778
@@ -32,44 +32,46 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer" unique_id=145339226]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer" unique_id=1079691350]
 layout_mode = 2
 
-[node name="SelectionContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_0xm2m")]
+[node name="SelectionContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=2074877148 instance=ExtResource("2_0xm2m")]
 layout_mode = 2
+uuid = "uid://0kf2c6pbuklo"
 
-[node name="SelectionContainer2" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_0xm2m")]
+[node name="SelectionContainer2" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=123480219 instance=ExtResource("2_0xm2m")]
 layout_mode = 2
 title = &"Angle Tanks"
 index = 2
+uuid = "uid://r1j7xso74yb6"
 
-[node name="SelectionContainer3" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_0xm2m")]
+[node name="SelectionContainer3" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1279686248 instance=ExtResource("2_0xm2m")]
 layout_mode = 2
 title = &"Block Breaker"
 index = 3
 
-[node name="SelectionContainer4" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_0xm2m")]
+[node name="SelectionContainer4" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1686932667 instance=ExtResource("2_0xm2m")]
 layout_mode = 2
 title = &"Race Cars"
 index = 4
 
-[node name="SelectionContainer5" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_0xm2m")]
+[node name="SelectionContainer5" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=536102754 instance=ExtResource("2_0xm2m")]
 layout_mode = 2
 title = &"Ninefolds"
 index = 5
 
-[node name="SelectionContainer6" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_0xm2m")]
+[node name="SelectionContainer6" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1529282114 instance=ExtResource("2_0xm2m")]
 layout_mode = 2
 title = &"Checkers"
 index = 6
 
-[node name="SelectionContainer7" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_0xm2m")]
+[node name="SelectionContainer7" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=539101456 instance=ExtResource("2_0xm2m")]
 layout_mode = 2
 title = &"Catching Fish"
 index = 7

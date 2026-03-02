@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://22vbpm5oxmpx"]
+[gd_scene format=3 uid="uid://22vbpm5oxmpx"]
 
-[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://gameplay_components/menu_controller.gd" id="1_wiswg"]
+[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://scripts/menu_controller.gd" id="1_wiswg"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://fonts/winky_sans_reg.ttf" id="1_ws2qb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_os0xr"]
