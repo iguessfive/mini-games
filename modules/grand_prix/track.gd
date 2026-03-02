@@ -1,0 +1,45 @@
+extends Node2D
+
+@export_file("*.tscn") var mud: String
+const full_asphalt = Vector2i(4,10)
+
+@export var mud_spot_max: int = 3
+
+var mud_spot_count: int = 0
+
+@onready var mud_timer: Timer = $MudTimer
+
+func _ready() -> void:
+	set_process(false)
+
+@warning_ignore("unused_parameter")
+func _process(delta: float) -> void:
+	if mud_spot_count >= mud_spot_max:
+		mud_timer.stop()
+	elif mud_timer.is_stopped():
+		mud_timer.start()
+
+func _on_lap_marker_body_entered(body:Node2D) -> void:
+	if body.is_in_group("car"):
+		body.lap += 1
+
+func _on_mud_timer_timeout() -> void:
+	if mud_spot_count < mud_spot_max:
+		mud_spot_count += 1
+		var full_asphalt_cell_position = $TrackLayer.get_used_cells_by_id(-1, full_asphalt).pick_random()
+
+		var random_angle = randf() * TAU  
+		var random_distance = randf_range(10, 25)  
+		var random_offset = Vector2(cos(random_angle), sin(random_angle)) * random_distance
+		
+		var mud_position = $TrackLayer.map_to_local(full_asphalt_cell_position) + random_offset
+		var mud_instance = load(mud).instantiate()
+		mud_instance.global_position = mud_position
+		add_child(mud_instance)
+		mud_instance.body_entered.connect(_on_mud_body_entered.bind(mud_instance))
+
+func _on_mud_body_entered(body:Node2D, source: Area2D) -> void:
+	if body.is_in_group("car"):
+		body.has_touched_mud = true
+		mud_spot_count -= 1
+		source.queue_free()

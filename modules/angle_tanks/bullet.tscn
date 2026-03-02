@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://d1rasrft2vtw1"]
+
+[ext_resource type="Script" uid="uid://dklkk56ha1n0j" path="res://modules/angle_tanks/bullet.gd" id="1_amose"]
+[ext_resource type="Texture2D" uid="uid://b0uwx34okovy6" path="res://modules/angle_tanks/bullet_blue.png" id="2_a4qnp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pi0nk"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xmb53"]
+radius = 5.0
+height = 16.0
+
+[node name="Bullet" type="CharacterBody2D" unique_id=957948492 groups=["bullets"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_amose")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1364071892]
+rotation = 1.5708
+texture = ExtResource("2_a4qnp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=930086774]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pi0nk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1264879480]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=257243529]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xmb53")
+debug_color = Color(0.74296, 0.44092, 0.40332, 0.42)
+
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=534493009]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]

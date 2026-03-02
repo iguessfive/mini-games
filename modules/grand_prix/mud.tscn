@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://kwsqa1ak2uvl"]
+
+[ext_resource type="Texture2D" uid="uid://bcyx1o7mnbkvy" path="res://modules/grand_prix/mud.png" id="1_g3wja"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g3wja"]
+radius = 11.0454
+
+[node name="Mud" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_g3wja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g3wja")

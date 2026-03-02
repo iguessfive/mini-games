@@ -1,0 +1,342 @@
+[gd_scene format=4 uid="uid://ceboqbet1m4rl"]
+
+[ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://systems/menu_controller.gd" id="1_a7nk1"]
+[ext_resource type="Script" uid="uid://bfc0fa33nitdu" path="res://modules/ninefolds/game_controller.gd" id="1_nm20j"]
+[ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://common/fonts/winky_sans_reg.ttf" id="2_nm20j"]
+[ext_resource type="Script" uid="uid://dtlty8jnp4vqi" path="res://modules/ninefolds/board_controller.gd" id="3_yg52c"]
+[ext_resource type="Texture2D" uid="uid://dd7734ynanhlw" path="res://modules/ninefolds/cell_large.png" id="4_2pm6q"]
+[ext_resource type="PackedScene" uid="uid://cwypvkfhe7p10" path="res://modules/ninefolds/micro_board.tscn" id="5_pemd1"]
+[ext_resource type="Script" uid="uid://fljdq4r5ktmh" path="res://modules/ninefolds/player.gd" id="6_sex0p"]
+[ext_resource type="Script" uid="uid://b7yisrp6a4vpu" path="res://modules/ninefolds/micro_board.gd" id="6_xe7jy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6y21s"]
+texture = ExtResource("4_2pm6q")
+texture_region_size = Vector2i(198, 198)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_s8r2v"]
+tile_size = Vector2i(198, 198)
+sources/1 = SubResource("TileSetAtlasSource_6y21s")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdt8y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6y21s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqk05"]
+bg_color = Color(0.73, 0.1314, 0.141377, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.860369, 0.860369, 0.860369, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pw1tb"]
+bg_color = Color(0.68, 0.1224, 0.131693, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.860369, 0.860369, 0.860369, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqktv"]
+bg_color = Color(0.76, 0.19, 0.1995, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.71, 0.71, 0.71, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_iawag"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_cdt8y")
+Button/styles/focus = SubResource("StyleBoxEmpty_6y21s")
+Button/styles/hover = SubResource("StyleBoxFlat_lqk05")
+Button/styles/normal = SubResource("StyleBoxFlat_pw1tb")
+Button/styles/pressed = SubResource("StyleBoxFlat_lqk05")
+Panel/styles/panel = SubResource("StyleBoxFlat_eqktv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_os0xr"]
+font = ExtResource("2_nm20j")
+font_size = 48
+
+[node name="Ninefold" type="Node2D" unique_id=686011440]
+script = ExtResource("1_nm20j")
+
+[node name="BoardController" type="Node2D" parent="." unique_id=2004834023 node_paths=PackedStringArray("active")]
+script = ExtResource("3_yg52c")
+active = NodePath("Player")
+
+[node name="MacroBoard" type="TileMapLayer" parent="BoardController" unique_id=1044820508]
+position = Vector2(259, 31)
+tile_map_data = PackedByteArray("AAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_s8r2v")
+
+[node name="MicroBoards" type="Node2D" parent="BoardController" unique_id=1024142738]
+
+[node name="MicroBoard1" parent="BoardController/MicroBoards" unique_id=1855740142 instance=ExtResource("5_pemd1")]
+position = Vector2(286, 61)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard2" parent="BoardController/MicroBoards" unique_id=816497786 instance=ExtResource("5_pemd1")]
+position = Vector2(483, 61)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard3" parent="BoardController/MicroBoards" unique_id=497232187 instance=ExtResource("5_pemd1")]
+position = Vector2(680, 61)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard4" parent="BoardController/MicroBoards" unique_id=1659651454 instance=ExtResource("5_pemd1")]
+position = Vector2(680, 259)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard5" parent="BoardController/MicroBoards" unique_id=1762674157 instance=ExtResource("5_pemd1")]
+position = Vector2(484, 259)
+script = ExtResource("6_xe7jy")
+is_playable = true
+
+[node name="MicroBoard6" parent="BoardController/MicroBoards" unique_id=1779873767 instance=ExtResource("5_pemd1")]
+position = Vector2(286, 259)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard7" parent="BoardController/MicroBoards" unique_id=1351860364 instance=ExtResource("5_pemd1")]
+position = Vector2(286, 455)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard8" parent="BoardController/MicroBoards" unique_id=116385991 instance=ExtResource("5_pemd1")]
+position = Vector2(482, 455)
+script = ExtResource("6_xe7jy")
+
+[node name="MicroBoard9" parent="BoardController/MicroBoards" unique_id=553481052 instance=ExtResource("5_pemd1")]
+position = Vector2(680, 455)
+script = ExtResource("6_xe7jy")
+
+[node name="Player" type="Node2D" parent="BoardController" unique_id=1689912654]
+script = ExtResource("6_sex0p")
+small_texture = "uid://bqoxivthqwohi"
+large_texture = "uid://dfwarnffrmmw1"
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=240552910]
+
+[node name="Menus" type="Control" parent="UI" unique_id=1621389638]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_iawag")
+script = ExtResource("1_a7nk1")
+
+[node name="StartMenu" type="Control" parent="UI/Menus" unique_id=655698212]
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="UI/Menus/StartMenu" unique_id=956772641]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eqktv")
+
+[node name="TitleLabel" type="Label" parent="UI/Menus/StartMenu" unique_id=302047628]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.252304
+anchor_top = 0.0408163
+anchor_right = 0.747696
+anchor_bottom = 0.206633
+grow_horizontal = 2
+text = "NineFold"
+label_settings = SubResource("LabelSettings_os0xr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="UI/Menus/StartMenu" unique_id=602724827]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.142857
+anchor_top = 0.247449
+anchor_right = 0.86636
+anchor_bottom = 0.5
+offset_bottom = -1.52588e-05
+theme_override_font_sizes/normal_font_size = 20
+text = "Match three in the meta grid to win."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="UI/Menus/StartMenu" unique_id=136276642]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.308756
+anchor_top = 0.647959
+anchor_right = 0.691244
+anchor_bottom = 0.775511
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_pw1tb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lqk05")
+text = "Start"
+
+[node name="ReturnButton" type="Button" parent="UI/Menus/StartMenu" unique_id=1887852696]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.359447
+anchor_top = 0.818878
+anchor_right = 0.647466
+anchor_bottom = 0.933674
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Return"
+
+[node name="PauseMenu" type="Control" parent="UI/Menus" unique_id=1788856045]
+visible = false
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="UI/Menus/PauseMenu" unique_id=1972791539]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Menus/PauseMenu" unique_id=701710513]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25576
+anchor_top = 0.155612
+anchor_right = 0.741936
+anchor_bottom = 0.326531
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="Button" parent="UI/Menus/PauseMenu" unique_id=1915041048]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373272
+anchor_top = 0.691327
+anchor_right = 0.626728
+anchor_bottom = 0.795919
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+metadata/_edit_use_anchors_ = true
+
+[node name="EndMenu" type="Control" parent="UI/Menus" unique_id=1935227147]
+visible = false
+layout_mode = 1
+anchor_left = 0.311632
+anchor_top = 0.197531
+anchor_right = 0.688368
+anchor_bottom = 0.802469
+offset_right = -6.10352e-05
+offset_bottom = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="UI/Menus/EndMenu" unique_id=1187523226]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="UI/Menus/EndMenu" unique_id=1237734760]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164747
+anchor_top = 0.112245
+anchor_right = 0.835253
+anchor_bottom = 0.331633
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="UI/Menus/EndMenu" unique_id=1820324169]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.410138
+anchor_top = 0.686224
+anchor_right = 0.592166
+anchor_bottom = 0.765306
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="UI/Menus/EndMenu" unique_id=1870591505]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35023
+anchor_top = 0.540816
+anchor_right = 0.649769
+anchor_bottom = 0.647959
+offset_bottom = 1.52588e-05
+theme_override_font_sizes/font_size = 24
+text = "Retry"
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=455310348]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1583775411]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.721, 0.38, 1)
+
+[connection signal="game_over" from="UI/Menus" to="UI/Menus" method="_on_game_over"]
+[connection signal="start_game" from="UI/Menus" to="." method="_on_menus_start_game"]
+[connection signal="pressed" from="UI/Menus/StartMenu/StartButton" to="UI/Menus" method="_on_start_button_pressed"]
+[connection signal="pressed" from="UI/Menus/StartMenu/ReturnButton" to="UI/Menus" method="_on_return_button_pressed"]
+[connection signal="pressed" from="UI/Menus/PauseMenu/ExitButton" to="UI/Menus" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/Menus/EndMenu/QuitButton" to="UI/Menus" method="_on_quit_button_pressed"]
