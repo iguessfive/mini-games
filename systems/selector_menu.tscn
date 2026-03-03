@@ -20,63 +20,55 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.7125, 0.75, 1)
+mouse_filter = 2
+color = Color(0.72, 0.72, 0.72, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=379362766]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0277778
-anchor_right = 0.972222
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1075887037]
+layout_mode = 0
+offset_left = 32.000027
+offset_top = 20.0
+offset_right = 1120.0
+offset_bottom = 512.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer" unique_id=145339226]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer" unique_id=1079691350]
-layout_mode = 2
-
-[node name="SelectionContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=2074877148 instance=ExtResource("2_csjxt")]
+[node name="SelectionContainer" parent="GridContainer" unique_id=2074877148 instance=ExtResource("2_csjxt")]
 layout_mode = 2
 uuid = "uid://0kf2c6pbuklo"
 
-[node name="SelectionContainer2" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=123480219 instance=ExtResource("2_csjxt")]
+[node name="SelectionContainer2" parent="GridContainer" unique_id=123480219 instance=ExtResource("2_csjxt")]
 layout_mode = 2
 title = &"Angle Tanks"
 index = 2
 uuid = "uid://r1j7xso74yb6"
 
-[node name="SelectionContainer3" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1279686248 instance=ExtResource("2_csjxt")]
+[node name="SelectionContainer3" parent="GridContainer" unique_id=1279686248 instance=ExtResource("2_csjxt")]
 layout_mode = 2
 title = &"Block Breaker"
 index = 3
 uuid = "uid://drclxwamm7dak"
 
-[node name="SelectionContainer4" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1686932667 instance=ExtResource("2_csjxt")]
+[node name="SelectionContainer4" parent="GridContainer" unique_id=1686932667 instance=ExtResource("2_csjxt")]
 layout_mode = 2
 title = &"Grand Prix"
 index = 4
 uuid = "uid://bv5so1kb06vhr"
 
-[node name="SelectionContainer5" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=536102754 instance=ExtResource("2_csjxt")]
+[node name="SelectionContainer5" parent="GridContainer" unique_id=536102754 instance=ExtResource("2_csjxt")]
 layout_mode = 2
 title = &"Ninefolds"
 index = 5
 uuid = "uid://ceboqbet1m4rl"
 
-[node name="SelectionContainer6" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1529282114 instance=ExtResource("2_csjxt")]
+[node name="SelectionContainer6" parent="GridContainer" unique_id=1529282114 instance=ExtResource("2_csjxt")]
 layout_mode = 2
 title = &"Checkers"
 index = 6
 uuid = "uid://y3mvbybhecf0"
 
-[node name="SelectionContainer7" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=539101456 instance=ExtResource("2_csjxt")]
+[node name="SelectionContainer7" parent="GridContainer" unique_id=539101456 instance=ExtResource("2_csjxt")]
 layout_mode = 2
-title = &"Catching Fish"
+title = &"Fish Catcher"
 index = 7
 uuid = "uid://4hkhgkhfgf22"

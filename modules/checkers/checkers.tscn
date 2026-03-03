@@ -9,6 +9,26 @@
 [ext_resource type="PackedScene" uid="uid://nkhubd5l0vq2" path="res://modules/checkers/piece_red.tscn" id="5_4f6a8"]
 [ext_resource type="PackedScene" uid="uid://bphgprw1ifir1" path="res://modules/checkers/piece_blue.tscn" id="6_4wp85"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4f6a8"]
+texture = ExtResource("3_hfbwg")
+texture_region_size = Vector2i(64, 64)
+2:0/0 = 0
+1:0/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_af8c3"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_4f6a8")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4f6a8"]
+resource_name = "pieces"
+scenes/0/scene = ExtResource("5_4f6a8")
+scenes/1/scene = ExtResource("6_4wp85")
+
+[sub_resource type="TileSet" id="TileSet_4wp85"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_4f6a8")
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6r8pi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfbwg"]
@@ -46,32 +66,44 @@ Panel/styles/panel = SubResource("StyleBoxFlat_6r8pi")
 font = ExtResource("2_hfbwg")
 font_size = 48
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4f6a8"]
-texture = ExtResource("3_hfbwg")
-texture_region_size = Vector2i(64, 64)
-2:0/0 = 0
-1:0/0 = 0
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_af8c3"]
-tile_size = Vector2i(64, 64)
-sources/1 = SubResource("TileSetAtlasSource_4f6a8")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4f6a8"]
-resource_name = "pieces"
-scenes/0/scene = ExtResource("5_4f6a8")
-scenes/1/scene = ExtResource("6_4wp85")
-
-[sub_resource type="TileSet" id="TileSet_4wp85"]
-tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetScenesCollectionSource_4f6a8")
-
-[node name="Checkers" type="Node2D"]
+[node name="Checkers" type="Node2D" unique_id=55590781]
 script = ExtResource("1_ptsoi")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="." unique_id=1564636911]
+layer = -10
 
-[node name="Menus" type="Control" parent="UI"]
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=1042420149]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.76, 0.6061, 0.418, 1)
+
+[node name="BoardHandler" type="Node2D" parent="." unique_id=1690726311]
+position = Vector2(576, 320)
+script = ExtResource("3_4wp85")
+
+[node name="Board" type="TileMapLayer" parent="BoardHandler" unique_id=2117210546]
+position = Vector2(-256, -256)
+tile_map_data = PackedByteArray("AAAAAAEAAQACAAAAAAAAAAMAAQACAAAAAAAAAAUAAQACAAAAAAAAAAcAAQACAAAAAAABAAAAAQACAAAAAAABAAIAAQACAAAAAAABAAQAAQACAAAAAAABAAYAAQACAAAAAAACAAEAAQACAAAAAAACAAMAAQACAAAAAAACAAUAAQACAAAAAAACAAcAAQACAAAAAAADAAAAAQACAAAAAAADAAIAAQACAAAAAAADAAQAAQACAAAAAAADAAYAAQACAAAAAAAEAAEAAQACAAAAAAAEAAMAAQACAAAAAAAEAAUAAQACAAAAAAAEAAcAAQACAAAAAAAFAAIAAQACAAAAAAAFAAQAAQACAAAAAAAFAAYAAQACAAAAAAAGAAEAAQACAAAAAAAGAAMAAQACAAAAAAAGAAcAAQACAAAAAAAHAAAAAQACAAAAAAAHAAIAAQACAAAAAAAHAAQAAQACAAAAAAAHAAYAAQACAAAAAAAGAAUAAQACAAAAAAAFAAAAAQACAAAAAAA=")
+tile_set = SubResource("TileSet_af8c3")
+
+[node name="NonPlayableCellsSprite" type="Sprite2D" parent="BoardHandler/Board" unique_id=699537267]
+z_index = -5
+position = Vector2(256, 256)
+scale = Vector2(512, 512)
+texture = ExtResource("4_2pcxl")
+
+[node name="GameState" type="TileMapLayer" parent="BoardHandler" unique_id=1713621970]
+position = Vector2(-256, -256)
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAQABAAIAAAAAAAAAAQACAAEAAAAAAAAAAQADAAIAAAAAAAAAAQAAAAUAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAAAAAAAAAAAAQABAAYAAAAAAAAAAAACAAUAAAAAAAAAAAACAAcAAAAAAAAAAAADAAAAAAAAAAAAAQADAAYAAAAAAAAAAAAEAAEAAAAAAAAAAQAEAAUAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAAAAAAAAAAAAQAFAAIAAAAAAAAAAQAFAAYAAAAAAAAAAAAGAAEAAAAAAAAAAQAGAAUAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAAAAAAAAAAAAQAHAAIAAAAAAAAAAQAHAAYAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_4wp85")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=563240946]
+
+[node name="Menus" type="Control" parent="UI" unique_id=2099052404]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -83,7 +115,7 @@ mouse_filter = 2
 theme = SubResource("Theme_2pcxl")
 script = ExtResource("1_6r8pi")
 
-[node name="StartMenu" type="Control" parent="UI/Menus"]
+[node name="StartMenu" type="Control" parent="UI/Menus" unique_id=1506491065]
 layout_mode = 1
 anchor_left = 0.311632
 anchor_top = 0.197531
@@ -93,7 +125,7 @@ offset_right = -6.10352e-05
 offset_bottom = 6.10352e-05
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="UI/Menus/StartMenu"]
+[node name="Panel" type="Panel" parent="UI/Menus/StartMenu" unique_id=1707500916]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,7 +134,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6r8pi")
 
-[node name="TitleLabel" type="Label" parent="UI/Menus/StartMenu"]
+[node name="TitleLabel" type="Label" parent="UI/Menus/StartMenu" unique_id=1889269372]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.252304
@@ -115,7 +147,7 @@ label_settings = SubResource("LabelSettings_os0xr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="RichTextLabel" parent="UI/Menus/StartMenu"]
+[node name="Description" type="RichTextLabel" parent="UI/Menus/StartMenu" unique_id=727126625]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.142857
@@ -129,7 +161,7 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartButton" type="Button" parent="UI/Menus/StartMenu"]
+[node name="StartButton" type="Button" parent="UI/Menus/StartMenu" unique_id=1688277057]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.308756
@@ -139,11 +171,11 @@ anchor_bottom = 0.775511
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
-theme_override_styles/hover = SubResource("StyleBoxFlat_hfbwg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2pcxl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hfbwg")
 text = "Start"
 
-[node name="ReturnButton" type="Button" parent="UI/Menus/StartMenu"]
+[node name="ReturnButton" type="Button" parent="UI/Menus/StartMenu" unique_id=1316620824]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.359447
@@ -155,7 +187,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Return"
 
-[node name="PauseMenu" type="Control" parent="UI/Menus"]
+[node name="PauseMenu" type="Control" parent="UI/Menus" unique_id=296327873]
 visible = false
 layout_mode = 1
 anchor_left = 0.311632
@@ -168,7 +200,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="UI/Menus/PauseMenu"]
+[node name="Panel" type="Panel" parent="UI/Menus/PauseMenu" unique_id=2002100077]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -176,7 +208,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI/Menus/PauseMenu"]
+[node name="Label" type="Label" parent="UI/Menus/PauseMenu" unique_id=1873617178]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25576
@@ -190,7 +222,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ExitButton" type="Button" parent="UI/Menus/PauseMenu"]
+[node name="ExitButton" type="Button" parent="UI/Menus/PauseMenu" unique_id=782566705]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.373272
@@ -202,7 +234,7 @@ grow_vertical = 2
 text = "Exit"
 metadata/_edit_use_anchors_ = true
 
-[node name="EndMenu" type="Control" parent="UI/Menus"]
+[node name="EndMenu" type="Control" parent="UI/Menus" unique_id=1205826806]
 visible = false
 layout_mode = 1
 anchor_left = 0.311632
@@ -215,7 +247,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="UI/Menus/EndMenu"]
+[node name="Panel" type="Panel" parent="UI/Menus/EndMenu" unique_id=1127836208]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -223,7 +255,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameOverLabel" type="Label" parent="UI/Menus/EndMenu"]
+[node name="GameOverLabel" type="Label" parent="UI/Menus/EndMenu" unique_id=918578533]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.164747
@@ -238,7 +270,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="QuitButton" type="Button" parent="UI/Menus/EndMenu"]
+[node name="QuitButton" type="Button" parent="UI/Menus/EndMenu" unique_id=562284206]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.410138
@@ -251,7 +283,7 @@ text = "Quit
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="UI/Menus/EndMenu"]
+[node name="Button" type="Button" parent="UI/Menus/EndMenu" unique_id=1275603087]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.35023
@@ -262,38 +294,6 @@ offset_bottom = 1.52588e-05
 theme_override_font_sizes/font_size = 24
 text = "Retry"
 metadata/_edit_use_anchors_ = true
-
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -10
-
-[node name="ColorRect" type="ColorRect" parent="Background"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.76, 0.6061, 0.418, 1)
-
-[node name="BoardHandler" type="Node2D" parent="."]
-position = Vector2(576, 320)
-script = ExtResource("3_4wp85")
-
-[node name="Board" type="TileMapLayer" parent="BoardHandler"]
-position = Vector2(-256, -256)
-tile_map_data = PackedByteArray("AAAAAAEAAQACAAAAAAAAAAMAAQACAAAAAAAAAAUAAQACAAAAAAAAAAcAAQACAAAAAAABAAAAAQACAAAAAAABAAIAAQACAAAAAAABAAQAAQACAAAAAAABAAYAAQACAAAAAAACAAEAAQACAAAAAAACAAMAAQACAAAAAAACAAUAAQACAAAAAAACAAcAAQACAAAAAAADAAAAAQACAAAAAAADAAIAAQACAAAAAAADAAQAAQACAAAAAAADAAYAAQACAAAAAAAEAAEAAQACAAAAAAAEAAMAAQACAAAAAAAEAAUAAQACAAAAAAAEAAcAAQACAAAAAAAFAAIAAQACAAAAAAAFAAQAAQACAAAAAAAFAAYAAQACAAAAAAAGAAEAAQACAAAAAAAGAAMAAQACAAAAAAAGAAcAAQACAAAAAAAHAAAAAQACAAAAAAAHAAIAAQACAAAAAAAHAAQAAQACAAAAAAAHAAYAAQACAAAAAAAGAAUAAQACAAAAAAAFAAAAAQACAAAAAAA=")
-tile_set = SubResource("TileSet_af8c3")
-
-[node name="NonPlayableCellsSprite" type="Sprite2D" parent="BoardHandler/Board"]
-z_index = -5
-position = Vector2(256, 256)
-scale = Vector2(512, 512)
-texture = ExtResource("4_2pcxl")
-
-[node name="GameState" type="TileMapLayer" parent="BoardHandler"]
-position = Vector2(-256, -256)
-tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAQABAAIAAAAAAAAAAQACAAEAAAAAAAAAAQADAAIAAAAAAAAAAQAAAAUAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAAAAAAAAAAAAQABAAYAAAAAAAAAAAACAAUAAAAAAAAAAAACAAcAAAAAAAAAAAADAAAAAAAAAAAAAQADAAYAAAAAAAAAAAAEAAEAAAAAAAAAAQAEAAUAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAAAAAAAAAAAAQAFAAIAAAAAAAAAAQAFAAYAAAAAAAAAAAAGAAEAAAAAAAAAAQAGAAUAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAAAAAAAAAAAAQAHAAIAAAAAAAAAAQAHAAYAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_4wp85")
 
 [connection signal="game_over" from="UI/Menus" to="UI/Menus" method="_on_game_over"]
 [connection signal="start_game" from="UI/Menus" to="." method="_on_menus_start_game"]

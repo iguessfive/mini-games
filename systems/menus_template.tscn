@@ -7,7 +7,7 @@
 font = ExtResource("1_ws2qb")
 font_size = 48
 
-[node name="Menus" type="Control"]
+[node name="Menus" type="Control" unique_id=760532881]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -18,7 +18,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_wiswg")
 
-[node name="StartMenu" type="Control" parent="."]
+[node name="StartMenu" type="Control" parent="." unique_id=1622778311]
 layout_mode = 1
 anchor_left = 0.311632
 anchor_top = 0.197531
@@ -28,7 +28,7 @@ offset_right = -6.10352e-05
 offset_bottom = 6.10352e-05
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="StartMenu"]
+[node name="Panel" type="Panel" parent="StartMenu" unique_id=1068627885]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TitleLabel" type="Label" parent="StartMenu"]
+[node name="TitleLabel" type="Label" parent="StartMenu" unique_id=323544012]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.252304
@@ -49,7 +49,7 @@ label_settings = SubResource("LabelSettings_os0xr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="RichTextLabel" parent="StartMenu"]
+[node name="Description" type="RichTextLabel" parent="StartMenu" unique_id=45993119]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.142857
@@ -63,7 +63,7 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartButton" type="Button" parent="StartMenu"]
+[node name="StartButton" type="Button" parent="StartMenu" unique_id=1761157918]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.308756
@@ -75,7 +75,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Start"
 
-[node name="ReturnButton" type="Button" parent="StartMenu"]
+[node name="ReturnButton" type="Button" parent="StartMenu" unique_id=1764672994]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.359447
@@ -87,7 +87,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Return"
 
-[node name="PauseMenu" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="." unique_id=457147952]
 visible = false
 layout_mode = 1
 anchor_left = 0.311632
@@ -100,7 +100,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="PauseMenu"]
+[node name="Panel" type="Panel" parent="PauseMenu" unique_id=512194419]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,7 +108,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="PauseMenu"]
+[node name="Label" type="Label" parent="PauseMenu" unique_id=28668867]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25576
@@ -122,7 +122,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ExitButton" type="Button" parent="PauseMenu"]
+[node name="ExitButton" type="Button" parent="PauseMenu" unique_id=318686359]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.373272
@@ -134,7 +134,7 @@ grow_vertical = 2
 text = "Exit"
 metadata/_edit_use_anchors_ = true
 
-[node name="EndMenu" type="Control" parent="."]
+[node name="EndMenu" type="Control" parent="." unique_id=1021459655]
 visible = false
 layout_mode = 1
 anchor_left = 0.311632
@@ -147,7 +147,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="EndMenu"]
+[node name="Panel" type="Panel" parent="EndMenu" unique_id=1682731843]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,7 +155,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameOverLabel" type="Label" parent="EndMenu"]
+[node name="GameOverLabel" type="Label" parent="EndMenu" unique_id=1501283399]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.164747
@@ -170,7 +170,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="QuitButton" type="Button" parent="EndMenu"]
+[node name="QuitButton" type="Button" parent="EndMenu" unique_id=478612683]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.410138
@@ -183,7 +183,7 @@ text = "Quit
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="EndMenu"]
+[node name="Button" type="Button" parent="EndMenu" unique_id=1206017929]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.35023

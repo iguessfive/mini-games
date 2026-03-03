@@ -1,10 +1,9 @@
+@tool
 extends Container
 
 @export var title: StringName
 @export var index: int
 @export_file("*.tscn") var uuid: String
-
-var start_screen: StringName
 
 @onready var title_label := %TitleLabel
 @onready var index_label := %IndexLabel
