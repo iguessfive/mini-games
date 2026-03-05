@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dpnoift85dkdq"]
+
+[ext_resource type="Texture2D" uid="uid://dwbflw1xp831n" path="res://modules/fish_catcher/fish_pack.png" id="1_kpkfk"]
+
+[node name="PurpleFish" type="Sprite2D" unique_id=1377244338]
+scale = Vector2(0.30701756, 0.30701753)
+texture = ExtResource("1_kpkfk")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)

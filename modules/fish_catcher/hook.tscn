@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c8bg1xf4ah77q"]
+
+[ext_resource type="Texture2D" uid="uid://4mvf24vjsn4w" path="res://common/white_1x1.png" id="1_iw3ow"]
+
+[node name="Net" type="Sprite2D" unique_id=141812910]
+modulate = Color(0.32587665, 0.59, 0.12389998, 1)
+scale = Vector2(19.999998, 14)
+texture = ExtResource("1_iw3ow")

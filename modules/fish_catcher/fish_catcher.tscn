@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://4hkhgkhfgf22"]
 
 [ext_resource type="Shader" uid="uid://n4ck6ehvldhn" path="res://common/shader/sway_motion.tres" id="1_d8afd"]
-[ext_resource type="Script" uid="uid://c4b11cla4b84i" path="res://modules/fish_catcher/world_2d.gd" id="1_lta41"]
+[ext_resource type="Script" uid="uid://c4b11cla4b84i" path="res://modules/fish_catcher/world.gd" id="1_lta41"]
 [ext_resource type="Script" uid="uid://dm71l0y1drptf" path="res://systems/menu_controller.gd" id="1_n7k6d"]
 [ext_resource type="Texture2D" uid="uid://bwcv01c7dogcb" path="res://modules/fish_catcher/waves.png" id="1_s2uwj"]
 [ext_resource type="FontFile" uid="uid://dw42h5y4rmyoq" path="res://common/fonts/winky_sans_reg.ttf" id="2_3qujv"]
 [ext_resource type="Script" uid="uid://co3jva7uifmpf" path="res://modules/fish_catcher/fishermen.gd" id="4_d80ok"]
 [ext_resource type="Texture2D" uid="uid://ds017qk8vejdt" path="res://modules/fish_catcher/player.png" id="4_lta41"]
+[ext_resource type="PackedScene" uid="uid://0bxtxj0lyc67" path="res://modules/fish_catcher/reel_fish_event.tscn" id="6_us6ru"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d80ok"]
 shader = ExtResource("1_d8afd")
 shader_parameter/Start = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_us6ru"]
+size = Vector2(26, 156)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d80ok"]
 atlas = ExtResource("4_lta41")
@@ -36,6 +40,34 @@ region = Rect2(256, 0, 64, 64)
 atlas = ExtResource("4_lta41")
 region = Rect2(320, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h27gf"]
+atlas = ExtResource("4_lta41")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as8ys"]
+atlas = ExtResource("4_lta41")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp1mv"]
+atlas = ExtResource("4_lta41")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bacu1"]
+atlas = ExtResource("4_lta41")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgd2m"]
+atlas = ExtResource("4_lta41")
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekpff"]
+atlas = ExtResource("4_lta41")
+region = Rect2(384, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usoaa"]
+atlas = ExtResource("4_lta41")
+region = Rect2(0, 320, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_d8afd"]
 animations = [{
 "frames": [{
@@ -60,7 +92,36 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h27gf")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_as8ys")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_bp1mv")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_bacu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgd2m")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_ekpff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usoaa")
+}],
+"loop": true,
+"name": &"row",
+"speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w86is"]
+size = Vector2(4.5, 6)
 
 [sub_resource type="LabelSettings" id="LabelSettings_os0xr"]
 font = ExtResource("2_3qujv")
@@ -68,40 +129,65 @@ font_size = 48
 
 [node name="FishingGame" type="Node2D" unique_id=166033243]
 
-[node name="World2D" type="Node2D" parent="." unique_id=563066487]
+[node name="World" type="Node2D" parent="." unique_id=563066487]
 script = ExtResource("1_lta41")
 
-[node name="Water" type="ColorRect" parent="World2D" unique_id=65324429]
+[node name="Water" type="ColorRect" parent="World" unique_id=65324429]
 offset_top = 316.0
 offset_right = 1152.0
 offset_bottom = 644.0
 color = Color(0.09411765, 0.29803923, 0.5803922, 1)
 
-[node name="Sky" type="ColorRect" parent="World2D" unique_id=1152194477]
+[node name="Sky" type="ColorRect" parent="World" unique_id=1152194477]
 offset_top = -5.0
 offset_right = 1152.0
 offset_bottom = 323.0
 color = Color(0.76862746, 0.85490197, 0.94509804, 1)
 
-[node name="Waves" type="Sprite2D" parent="World2D" unique_id=1061432687]
+[node name="Waves" type="Sprite2D" parent="World" unique_id=1061432687]
+texture_filter = 1
 material = SubResource("ShaderMaterial_d80ok")
 position = Vector2(582.99994, 331)
 scale = Vector2(0.8087501, 0.9062499)
 texture = ExtResource("1_s2uwj")
 
-[node name="Fishermen" type="CharacterBody2D" parent="." unique_id=1226101250]
-position = Vector2(158, 292)
-script = ExtResource("4_d80ok")
+[node name="Bounds" type="Node" parent="World" unique_id=1119482227]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Fishermen" unique_id=1275229398]
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Bounds" unique_id=367163448]
+position = Vector2(-13, 322)
+
+[node name="Left" type="CollisionShape2D" parent="World/Bounds/StaticBody2D" unique_id=1684628583]
+shape = SubResource("RectangleShape2D_us6ru")
+
+[node name="Right" type="CollisionShape2D" parent="World/Bounds/StaticBody2D" unique_id=1149679304]
+position = Vector2(1179, 3)
+shape = SubResource("RectangleShape2D_us6ru")
+
+[node name="Fishermen" type="CharacterBody2D" parent="." unique_id=1226101250 node_paths=PackedStringArray("reel_point")]
+position = Vector2(454, 292)
+script = ExtResource("4_d80ok")
+reel_point = NodePath("ReelPoint")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fishermen" unique_id=699428087]
-position = Vector2(120, 2)
+texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d8afd")
-animation = &"idle"
-frame = 1
-frame_progress = 0.66958964
+animation = &"row"
+frame_progress = 0.81394666
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fishermen" unique_id=4429198]
+position = Vector2(-61.75, 27)
+shape = SubResource("RectangleShape2D_w86is")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Fishermen" unique_id=2016681698]
+position = Vector2(62, 25)
+shape = SubResource("RectangleShape2D_w86is")
+
+[node name="ReelPoint" type="Marker2D" parent="Fishermen" unique_id=453593368]
+position = Vector2(130, 0)
+
+[node name="ReelFish" parent="Fishermen/ReelPoint" unique_id=1764580107 instance=ExtResource("6_us6ru")]
+visible = false
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2071187829]
 
