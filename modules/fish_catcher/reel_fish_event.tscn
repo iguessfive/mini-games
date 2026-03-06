@@ -2,11 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://4mvf24vjsn4w" path="res://common/white_1x1.png" id="1_4r743"]
 [ext_resource type="Script" uid="uid://cy28aydcr3xeu" path="res://modules/fish_catcher/reel_fish.gd" id="1_yaqqb"]
-[ext_resource type="PackedScene" uid="uid://c8bg1xf4ah77q" path="res://modules/fish_catcher/hook.tscn" id="3_kab12"]
 [ext_resource type="PackedScene" uid="uid://dpnoift85dkdq" path="res://modules/fish_catcher/purple_fish.tscn" id="4_hjnnu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugp3c"]
-size = Vector2(34, 78)
+size = Vector2(34, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8abko"]
 size = Vector2(34, 26)
@@ -24,8 +23,10 @@ texture = ExtResource("1_4r743")
 
 [node name="Hook" type="Area2D" parent="." unique_id=154861368]
 
-[node name="Sprite2D" parent="Hook" unique_id=141812910 instance=ExtResource("3_kab12")]
-scale = Vector2(34.000004, 76.5)
+[node name="Sprite2D" type="Sprite2D" parent="Hook" unique_id=141812910]
+modulate = Color(0.32587665, 0.59, 0.12389998, 1)
+scale = Vector2(34.000004, 60)
+texture = ExtResource("1_4r743")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hook" unique_id=121974897]
 shape = SubResource("RectangleShape2D_ugp3c")
