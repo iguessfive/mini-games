@@ -497,7 +497,6 @@ libraries/ = SubResource("AnimationLibrary_jmatj")
 
 [node name="Menus" type="Control" parent="UI" unique_id=1082947100]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -20,11 +20,12 @@ var cooldown_timer: Timer = Timer.new()
 
 func _ready() -> void:
 	sprite.play("idle")
-	
-	var space = InputEventKey.new()
-	space.keycode = KEY_SPACE
-	InputMap.add_action("throw")
-	InputMap.action_add_event("throw", space)
+
+	if not InputMap.has_action("throw"):
+		InputMap.add_action("throw")
+		var space = InputEventKey.new()
+		space.keycode = KEY_SPACE
+		InputMap.action_add_event("throw", space)
 	
 	add_child(bite_timer)
 	bite_timer.one_shot = true
